@@ -2,9 +2,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import { createRouter } from 'next-connect';
-import path from 'path';
-import fs from 'fs';
 import { PrismaClient } from '@prisma/client';
+import cloudinary from 'cloudinary';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 interface MulterRequest extends NextApiRequest {
   file?: Express.Multer.File;
@@ -12,20 +14,14 @@ interface MulterRequest extends NextApiRequest {
 
 const prisma = new PrismaClient();
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      const uploadPath = path.join(process.cwd(), 'public', 'uploads');
-      if (!fs.existsSync(uploadPath)) {
-        fs.mkdirSync(uploadPath, { recursive: true });
-      }
-      cb(null, uploadPath);
-    },
-    filename: (req, file, cb) => {
-      cb(null, `${Date.now()}-${file.originalname}`);
-    },
-  }),
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const uploadMiddleware = upload.single('file');
 
@@ -40,6 +36,7 @@ const runMiddleware = (req: NextApiRequest, res: NextApiResponse, fn: Function) 
     });
   });
 };
+
 router.use(async (req, res, next) => {
   try {
     await runMiddleware(req, res, uploadMiddleware);
@@ -51,34 +48,44 @@ router.use(async (req, res, next) => {
 });
 
 router.post(async (req: MulterRequest, res: NextApiResponse) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded' });
-    }
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.v2.uploader.upload_stream(
+        { resource_type: 'auto' },
+        (error, result) => {
+          if (error) {
+            return reject(error);
+          }
+          resolve(result);
+        }
+      ).end(req.file!.buffer);
+    });
 
-    const { title, description } = req.body;
-    const imagePath = `/uploads/${req.file.filename}`;
+    const imageUrl = (result as any).secure_url;
 
+    // Save the URL to the database
     const project = await prisma.project.create({
       data: {
-        title,
-        description,
-        image: imagePath,
+        title: req.body.title,
+        description: req.body.description,
+        image: imageUrl,
       },
     });
 
-    res.status(200).json(project);
-  } catch (error) {
-    console.error('Error during file upload:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-    res.status(500).json({ error: `Something went wrong: ${errorMessage}` });
+    res.status(200).json({ project });
+  } catch (err) {
+    console.error('Error uploading file:', err); // Log the error
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    res.status(500).json({ error: `File upload error: ${errorMessage}` });
   }
 });
 
-export default router.handler();
-
-export const config = {
-  api: {
-    bodyParser: false,
+export default router.handler({
+  onError: (err, req, res) => {
+    res.status(500).json({ error: `Unexpected error: ${err.message}` });
   },
-};
+});
