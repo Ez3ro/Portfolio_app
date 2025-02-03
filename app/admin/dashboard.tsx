@@ -76,14 +76,6 @@ const Dashboard = () => {
     }
   };
 
-  const deleteAllProjects = async () => {
-    try {
-      await axios.delete('/api/projects');
-      setProjects([]);
-    } catch (error) {
-      console.error('Error deleting projects:', error);
-    }
-  };
 
   return (
     <div className="p-8">
