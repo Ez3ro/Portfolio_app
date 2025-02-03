@@ -8,8 +8,8 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image }) => {
   return (
-    <div className=" rounded overflow-hidden shadow-lg transform transition duration-500 hover:scale-105 bg-gray-900 p-2 ">
-      <img className="w-full" src={image} alt={title} />
+    <div className="rounded overflow-hidden transform transition duration-500 hover:scale-105  p-5 border border-transparent hover:border-green-500">
+      <img className="w-full h-60" src={image} alt={title} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-500 text-base">{description}</p>

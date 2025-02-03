@@ -67,7 +67,7 @@ const Home: React.FC = () => {
         />
       </Head>
 
-      <Header />
+      {/* <Header /> */}
       <header className="flex flex-col items-center py-16 pt-24">
         <h1 className="text-4xl font-bold">Ezekhiel Paras</h1>
         <h2 className="text-1xl mt-2">

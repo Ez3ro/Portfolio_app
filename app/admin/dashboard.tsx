@@ -124,12 +124,12 @@ const Dashboard = () => {
         >
           Add Project
         </button>
-        <button
+        {/* <button
           onClick={deleteAllProjects}
           className="bg-red-500 text-white p-2 rounded hover:bg-red-600 ml-2"
         >
           Delete All Projects
-        </button>
+        </button> */}
       </div>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project) => (
