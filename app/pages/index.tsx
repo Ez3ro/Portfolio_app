@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import TechInfoSection from '../components/TechinfoSection';
 import Head from 'next/head';
 import Typed from 'typed.js';
-
+import dev from '../../public/images/dev2.png';
 interface Project {
   id: number;
   title: string;
@@ -32,13 +32,13 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['SOFTWARE ENGINEER', 'PYTHON DEVELOPER', 'FULL-STACK DEVELOPER', 'SEO SPECIALIST'],
-      typeSpeed: 80,    // Typing speed in milliseconds (lower = faster)
+      strings: ['Software Engineer'],
+      typeSpeed: 100,    // Typing speed in milliseconds (lower = faster)
       backSpeed: 50,     // Backspacing speed in milliseconds (lower = faster)
       startDelay: 300,   // Delay before typing starts
       cursorChar: '|',
       backDelay: 1500,   // Delay before backspacing
-      loop: true
+      loop: false,        // Repeat typing loop
     });
   
     return () => typed.destroy();
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
+    <div className="background">
       <Head>
         <link
           rel="stylesheet"
@@ -68,20 +68,23 @@ const Home: React.FC = () => {
       </Head>
 
       {/* <Header /> */}
-      <header className="flex flex-col items-center py-16 pt-24">
-        <h1 className="text-4xl font-bold">Ezekhiel Paras</h1>
-        <h2 className="text-1xl mt-2">
-        <span className="text-green-500" ref={el} />
-        </h2>
-      </header>
+      <div className="hero-wrapper grid grid-cols-12 gap-4 p-10">
+        
+        <div className="hero-image col-span-5">
+          <img src={dev.src} alt="asdsad" className="" />
+        </div>
+        <div className="hero-text col-span-7 p-10 text-center gap-11">
+          
+          <h2 className="text-1xl mt-2">
+          {"<span>"}<span className="text-green-500" ref={el}/>{"</span>"}
+          </h2>
+          <br />
+          <h1 className="text-4xl font-bold dm-mono-regular">Ezekhiel Paras {"{"} Full <br />Stack{" }"} Web & App <br />developer_</h1>
+          <br />
+          <p>With expertise in cutting-edge technologies such as NodeJS, React, Angular, and Laravel... I deliver web solutions that are both innovative and robust.</p>
+                  </div>
+      </div>
       <main className="flex flex-col items-center gap-8 p-5">
-        <section id="about" className="r p-10">
-          <h2 className="text-2xl text-center font-semibold text-green-500">About Me</h2>
-          <p className="mt-4 text-left">
-            I'm <strong className="text-green-500">Selwyn Ezekhiel Paras</strong>, a passionate software engineer who started at 17 with PHP and Laravel. Now a full-time Python developer, I thrive on learning and keeping up with the latest tech. My experience spans freelancing, teaching, and even working as an SEO specialist for Microsoft Ads. While I focus on backend development, I’m also skilled in frontend technologies like Next.js, React.js, and TailwindCSS. I love tackling complex problems and contributing to meaningful projects.
-          </p>
-        </section>
-
         <TechInfoSection/>
         
         <section id="experiences" className="w-full p-10">
