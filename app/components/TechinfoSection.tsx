@@ -18,7 +18,8 @@ import facebookLogo from '../../public/images/facebook.png';
 
 const TechInfoSection: React.FC = () => {
   return (
-    <section id="tech-stacks-contacts" className="w-full ">
+    <section id="tech-stacks-contacts" className="w-full "> 
+    <marquee>
       <div className="flex flex-col items-center space-y-10 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 w-full max-w-4xl">
           <div className="flex flex-col items-center space-y-10">
@@ -86,6 +87,7 @@ const TechInfoSection: React.FC = () => {
           </div>
         </div>
       </div>
+      </marquee>
     </section>
   );
 };

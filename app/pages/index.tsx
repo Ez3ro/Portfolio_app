@@ -32,13 +32,13 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Software Engineer'],
-      typeSpeed: 100,    // Typing speed in milliseconds (lower = faster)
+      strings: ['Software Engineer', 'Web Developer', 'App Developer', 'Freelancer'],
+      typeSpeed: 1,    // Typing speed in milliseconds (lower = faster)
       backSpeed: 50,     // Backspacing speed in milliseconds (lower = faster)
       startDelay: 300,   // Delay before typing starts
-      cursorChar: '|',
+      cursorChar: '<',
       backDelay: 1500,   // Delay before backspacing
-      loop: false,        // Repeat typing loop
+      loop: true,        // Repeat typing loop
     });
   
     return () => typed.destroy();
@@ -76,7 +76,12 @@ const Home: React.FC = () => {
         <div className="hero-text col-span-7 p-10 text-center gap-11">
           
           <h2 className="text-1xl mt-2">
-          {"<span>"}<span className="text-green-500" ref={el}/>{"</span>"}
+          <div className="typing-container">
+          {"<span> "}<span className="text-green-500" ref={el}/> <span>&nbsp; </span>
+            
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" </span>"}
+          
           </h2>
           <br />
           <h1 className="text-4xl font-bold dm-mono-regular">Ezekhiel Paras {"{"} Full <br />Stack{" }"} Web & App <br />developer_</h1>
