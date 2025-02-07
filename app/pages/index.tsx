@@ -77,20 +77,23 @@ const Home: React.FC = () => {
           
           <h2 className="text-1xl mt-2">
           <div className="typing-container">
-          {"<span> "}<span className="text-green-500" ref={el}/> <span>&nbsp; </span>
-            
+          {"<span> "}<span className="gradient-text" ref={el}/> <span>&nbsp; </span>
           </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" </span>"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" </span>"}
           
           </h2>
           <br />
-          <h1 className="text-4xl font-bold dm-mono-regular">Ezekhiel Paras {"{"} Full <br />Stack{" }"} Web & App <br />developer_</h1>
+          <h1 className="text-6xl font-bold dm-mono-regular">Ezekhiel Paras<span className="gradient-text">{"{"}Full <br />Stack{"}"}</span>Web & App <br />developer_</h1>
           <br />
-          <p>With expertise in cutting-edge technologies such as NodeJS, React, Angular, and Laravel... I deliver web solutions that are both innovative and robust.</p>
+          <p> <span className="text-red-400">{"<p>"}</span>With expertise in cutting-edge technologies such as  <span className="text-red-400">NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
+          <span className="text-red-400">{"</p>"}</span> </p>
+          <TechInfoSection/>
                   </div>
       </div>
       <main className="flex flex-col items-center gap-8 p-5">
-        <TechInfoSection/>
+        
         
         <section id="experiences" className="w-full p-10">
           <h2 className="text-2xl text-center font-semibold text-green-500">Experiences</h2>

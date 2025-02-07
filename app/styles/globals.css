@@ -36,14 +36,14 @@
   align-items: center;
   justify-content: center; /* Center horizontally */
   background-color: #272730;
-  height: 632px;
+  min-height: 632px;
   border-radius: 10px;
   width: 100%;
   max-width: 1316px; /* Set a max-width for the wrapper */
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  border-width: 0.1px;
+  border-width: 0px;
   border-color: #3b413d;
   position: relative; 
   padding: calc(var(--padding) + var(--border-size));
@@ -51,11 +51,12 @@
   z-index: 10;/* Required for the pseudo-element */
 }
 .hero-wrapper::before {
+  border-style: hidden;
   content: '';
   display: block;
   background: var(--border-bg);
-  width: calc(100% * 1.41421356237);
-  padding-bottom: calc(100% * 1.41421356237);
+  width: calc(100% * 7.41421356237);
+  padding-bottom: calc(100% * 7.41421356237);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -64,10 +65,11 @@
   animation: spin 8s linear infinite;
 }
 .hero-wrapper::after {
+  border-style: hidden;
   content: '';
   position: absolute;
   inset: var(--border-size);
-  border-width: 1px;
+  border-width: 0.1px;
   border-color: #272730;
   background: #272730;
   
@@ -81,7 +83,10 @@
 }
 
 .background{
+  
   padding: 5rem;
+  background-image: url('/images/bg-dark.png');
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
 }
 .hero-image {
   background: #272730;
@@ -91,6 +96,7 @@
 }
 
 .hero-text {
+  font-size: 20px;
   background-color: #272730;
   color: var(--foreground);
   text-align: left;
@@ -107,14 +113,17 @@
     padding: 0 30px 0 1px;
   }
   .hero-wrapper::before{
+    
     width: 90em;
     padding-bottom: 90em;
     
   }
-  
+  .text-6xl {
+    font-size: 2.75rem;
+  }
   .hero-wrapper {
     flex-direction: column; /* Switch to column layout on smaller screens */
-    max-width: 690px;
+    max-width: 100%;
     margin: 1rem; /* Adjust margins for smaller screens */
     padding: 1rem; /* Add padding to ensure content stays within the wrapper */
     
@@ -129,7 +138,8 @@
 
   .hero-image,
   .hero-text {
-
+    
+    padding:0;
     text-align: left;
     width: 100%;
     max-width: 800px; /* Set width to 100% for both columns */
@@ -146,5 +156,12 @@ body {
   font-display: swap;
   line-height: 1.3;
   font-size: 17px;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #38ff1e, #309723);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
 }
 
