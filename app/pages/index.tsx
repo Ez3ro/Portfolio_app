@@ -8,6 +8,9 @@ import TechInfoSection from '../components/TechinfoSection';
 import Head from 'next/head';
 import Typed from 'typed.js';
 import dev from '../../public/images/dev2.png';
+import { FiLayers } from "react-icons/fi";
+import { FiCodepen } from "react-icons/fi";
+import { FiUserCheck } from "react-icons/fi";
 interface Project {
   id: number;
   title: string;
@@ -77,21 +80,47 @@ const Home: React.FC = () => {
           
           <h2 className="text-1xl mt-2">
           <div className="typing-container">
-          {"<span> "}<span className="gradient-text" ref={el}/> <span>&nbsp; </span>
+          <span className="text-red-600">{"<span> "}</span><span ref={el}/> <span>&nbsp; </span>
           </div>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" </span>"}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-red-600">{"</span>"}</span> 
           
           </h2>
           <br />
-          <h1 className="text-6xl font-bold dm-mono-regular">Ezekhiel Paras<span className="gradient-text">{"{"}Full <br />Stack{"}"}</span>Web & App <br />developer_</h1>
+          <h1 className="text-5xl font-bold dm-mono-regular">Ezekhiel Paras <span className="gradient-text">{"{"}Full <br />Stack{"}"}</span> Web & App <br />developer_</h1>
           <br />
-          <p> <span className="text-red-400">{"<p>"}</span>With expertise in cutting-edge technologies such as  <span className="text-red-400">NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
-          <span className="text-red-400">{"</p>"}</span> </p>
+          <p> <span className="text-red-600">{"<p>"}</span>With expertise in cutting-edge technologies such as  
+          <span className="text-red-600"> NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
+          <span className="text-red-600">{"</p>"}</span> </p>
+          <br />
           <TechInfoSection/>
-                  </div>
+          <div className="flex flex-row text-center items-center">
+          <img className="h-6 w-6 top-2" src="/images/down.png" alt="" />
+          <a className="text-center text-gray-500" target="_blank" href="assets/resume.pdf"><i className="text-neutral-400 font-bold">[ Download my CV ]</i></a>
+          </div>
+          
+          </div>
       </div>
+
+  <div className="stats-info grid grid-cols-1 md:grid-cols-4 p-10 mt-6 items-left">
+  <div className="info-items">
+    <div className="stat-item text-2xl text-lime-400 "><FiLayers /></div>
+    <div className="stat-item text-6xl">8+</div>
+    <div className="stat-item pt-2">Experience</div>
+  </div>
+  <div className="info-items">
+    <div className="stat-item text-2xl text-lime-400 "><FiCodepen  /></div>
+    <div className="stat-item text-6xl">20+</div>
+    <div className="stat-item pt-2">Projects</div>
+  </div>
+  <div className="info-items">
+    <div className="stat-item text-2xl text-lime-400"><FiUserCheck /></div>
+    <div className="stat-item text-6xl">8+</div>
+    <div className="stat-item pt-2">Clients</div>
+  </div>
+  
+</div>
       <main className="flex flex-col items-center gap-8 p-5">
         
         
