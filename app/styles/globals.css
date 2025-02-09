@@ -25,6 +25,7 @@
 }
 .exp-container{
   padding-top: 2rem;
+ 
   display: flex;
   flex-direction: row;
   align-items: left;
@@ -366,8 +367,10 @@
   .stats-info{
     flex-direction: column; /* Switch to column layout on smaller screens */
     max-width: 100%;
-    margin: 1rem; /* Adjust margins for smaller screens */
-    padding: 1rem; /* Add padding to ensure content stays within the wrapper */
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem; /* Adjust margins for smaller screens */
+    padding: 2rem; /* Add padding to ensure content stays within the wrapper */
     
     height: auto;
 
@@ -385,8 +388,12 @@
     line-height: 4rem;
   }
  
-  
-
+  .exp-container{
+    max-width: none;
+    width: 102%;
+    padding-left: 1rem;
+    padding-top: 0;
+  }
   .hero-image,
   .hero-text {
     

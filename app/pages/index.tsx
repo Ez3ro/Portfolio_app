@@ -128,7 +128,7 @@ const Home: React.FC = () => {
      
         
         
-        <section id="experiences" className="w-full">
+        
         <div className="exp-container mx-auto">
         
         <div className="experiences-wrapper ">
@@ -194,7 +194,7 @@ const Home: React.FC = () => {
         
         </div>
         </div>
-        </section>
+       
 
 
 
