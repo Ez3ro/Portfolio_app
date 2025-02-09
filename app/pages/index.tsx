@@ -11,7 +11,7 @@ import dev from '../../public/images/dev2.png';
 import { FiLayers } from "react-icons/fi";
 import { FiCodepen } from "react-icons/fi";
 import { FiUserCheck } from "react-icons/fi";
-import { FiFacebook } from "react-icons/fi";
+import { FiSmartphone } from "react-icons/fi";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
@@ -161,11 +161,30 @@ const Home: React.FC = () => {
             <h2 className="text-xl z-20  pb-5 gradient-text">Contacts
             </h2>
             
-            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiFacebook /><a className="text-base pl-3 text-cyan-500" href="https://www.facebook.com/eze.khiel3"> Facebook.com</a></p>
-            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiGithub/> <a className="text-base pl-3 text-cyan-500" href="https://github.com/Ez3ro"> Github.com</a> </p>
-            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiLinkedin/> <a className="text-base pl-3 text-cyan-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/"> LinkedIn.com</a></p>
-            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiMail/> <a className="text-base pl-3 text-cyan-500 " href="mailto:Ezekhielofficial@gmail.com"> Ezekhielofficial@gmail.com</a></p>
-
+            <p className="text-2xl pb-2 flex flex-row text-gray-400">
+  <FiSmartphone />
+  <a className="text-base pl-3 text-cyan-500" href="sms:+639673881201">
+    +63 967 3881 201
+  </a>
+</p>
+<p className="text-2xl pb-2 flex flex-row text-gray-400">
+  <FiGithub />
+  <a className="text-base pl-3 text-cyan-500" href="https://github.com/Ez3ro" target="_blank" rel="noopener noreferrer">
+    Github.com
+  </a>
+</p>
+<p className="text-2xl pb-2 flex flex-row text-gray-400">
+  <FiLinkedin />
+  <a className="text-base pl-3 text-cyan-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/" target="_blank" rel="noopener noreferrer">
+    LinkedIn.com
+  </a>
+</p>
+<p className="text-2xl pb-2 flex flex-row text-gray-400">
+  <FiMail />
+  <a className="text-base pl-3 text-cyan-500" href="mailto:Ezekhielofficial@gmail.com">
+    Ezekhielofficial@gmail.com
+  </a>
+</p>
           </div>
           
         </div>

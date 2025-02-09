@@ -330,6 +330,9 @@
     width: 100%;
     flex-direction: column;
   }
+  .experiences-wrapper{
+    max-width: 960px;
+  }
   .git-wrapper{
     margin-left: 0;
     margin-top: 2rem;
@@ -391,10 +394,11 @@
   }
  
   .exp-container{
+    position: relative;
     max-width: none;
     width: 102%;
     padding-left: 1rem;
-    padding-top: 0;
+    padding-top: 1rem;
   }
   .hero-image,
   .hero-text {
@@ -405,6 +409,16 @@
     max-width: 800px; /* Set width to 100% for both columns */
     height: auto; /* Adjust height to auto for better responsiveness */
   }
+}
+@media (max-width: 425px) {
+ 
+ 
+  .exp-container{
+    width: 105%;
+    
+  }
+  
+  
 }
 
 
