@@ -84,30 +84,33 @@ const Home: React.FC = () => {
           
           <h2 className="text-1xl mt-2">
           <div className="typing-container">
-          <span className="text-red-600">{"<span> "}</span><span ref={el}/> <span>&nbsp; </span>
+          <span className="text-cyan-500">{"<span> "}</span><span ref={el}/> <span>&nbsp; </span>
           </div>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-red-600">{"</span>"}</span> 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-cyan-500">{"</span>"}</span> 
           
           </h2>
           <br />
           <h1 className="text-5xl font-bold dm-mono-regular">Ezekhiel Paras <span className="gradient-text">{"{"}Full <br />Stack{"}"}</span> Web & App <br />developer_</h1>
           <br />
-          <p> <span className="text-red-600">{"<p>"}</span>With expertise in cutting-edge technologies such as  
-          <span className="text-red-600"> NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
-          <span className="text-red-600">{"</p>"}</span> </p>
+          <p> <span className="text-cyan-500">{"<p>"}</span>With expertise in cutting-edge technologies such as  
+          <span className="text-cyan-500"> NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
+          <span className="text-cyan-500">{"</p>"}</span> </p>
           <br />
           <TechInfoSection/>
           <div className="flex flex-row text-center items-center">
+            <br />
+            <br />
+            <br />
           <img className="h-6 w-6 top-2" src="/images/down.png" alt="" />
-          <a className="text-center text-gray-500" target="_blank" href="assets/resume.pdf"><i className="text-neutral-400 font-bold">[ Download my CV ]</i></a>
+          <a className="text-center text-gray-500" target="_blank" href="assets/resume.pdf"><i className="text-neutral-400 font-bold text-lg"> [ Download my CV ]</i></a>
           </div>
           
           </div>
       </div>
 
-  <div className="stats-info grid grid-cols-1 md:grid-cols-4 p-10 mt-6 items-left">
+  <div className="stats-info grid grid-cols-1 md:grid-cols-4 p-10 mt-8 items-left">
   <div className="info-items">
     <div className="stat-item text-2xl text-lime-400 "><FiLayers /></div>
     <div className="stat-item text-6xl">8+</div>
@@ -132,44 +135,43 @@ const Home: React.FC = () => {
         <div className="exp-container mx-auto">
         
         <div className="experiences-wrapper ">
-        <h2 className="text-xl font-bold z-20 text-lime-400">Experiences in 8+ years</h2>
+        <h2 className="text-xl z-20 gradient-text">Experiences in 8+ years</h2>
         <br />
 
         <div className="z-20">
           <p>Free lance Software Engineer - <span className="text-gray-500">Self Employed</span><br />
-          <span className="text-gray-500">2017 - 2021</span>
-          </p>
+               </p>
           <br />
           <p>SEO Specialist/API Support  - <span className="text-gray-500">Microsoft Ads</span> 
           <br />
-          <span className="text-gray-500">2021 - 2022</span>
+    
           </p>
           <br />
           <p>Senior Software Engineer - <span className="text-gray-500">M6 makati</span>
           <br />
-          <span className="text-gray-500">2022 - 2023</span>
+      
           </p>
           <br />
           <p>SoftWare Engineer - <span className="text-gray-500">WebIt AUS</span>
           <br />
-          <span className="text-gray-500">2024 - Present</span>
+
           </p>
           <br />
           <div className="contact-wrapper">
-            <h2 className="text-xl font-bold z-20 text-lime-400 pb-5">Contacts
+            <h2 className="text-xl z-20  pb-5 gradient-text">Contacts
             </h2>
             
-            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiFacebook /><a className="text-xl pl-3 text-gray-500" href="https://www.facebook.com/eze.khiel3"> Facebook.com</a></p>
-            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiGithub/> <a className="text-xl pl-3 text-gray-500" href="https://github.com/Ez3ro"> Github.com</a> </p>
-            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiLinkedin/> <a className="text-xl pl-3 text-gray-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/"> LinkedIn.com</a></p>
-            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiMail/> <a className="text-xl pl-3 text-gray-500 " href="mailto:Ezekhielofficial@gmail.com"> Ezekhielofficial@gmail.com</a></p>
+            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiFacebook /><a className="text-base pl-3 text-cyan-500" href="https://www.facebook.com/eze.khiel3"> Facebook.com</a></p>
+            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiGithub/> <a className="text-base pl-3 text-cyan-500" href="https://github.com/Ez3ro"> Github.com</a> </p>
+            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiLinkedin/> <a className="text-base pl-3 text-cyan-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/"> LinkedIn.com</a></p>
+            <p className="text-2xl pb-2 flex flex-row text-gray-400"><FiMail/> <a className="text-base pl-3 text-cyan-500 " href="mailto:Ezekhielofficial@gmail.com"> Ezekhielofficial@gmail.com</a></p>
 
           </div>
           
         </div>
         </div>
         <div className="git-wrapper flex flex-col">
-         <h2 className="text-xl z-20 text-lime-400">Github Repositories</h2>
+         <h2 className="text-xl z-20 gradient-text">Github Repositories</h2>
          <br />
         <ul>
                 <li> <span className="text-xs text-gray-400"> E-Obra </span></li>
