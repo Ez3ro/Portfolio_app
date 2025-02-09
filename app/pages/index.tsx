@@ -39,13 +39,13 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Software Engineer', 'Web Developer', 'App Developer', 'Freelancer'],
-      typeSpeed: 1,    // Typing speed in milliseconds (lower = faster)
+      strings: ['Software Engineer'],
+      typeSpeed: 10,    // Typing speed in milliseconds (lower = faster)
       backSpeed: 50,     // Backspacing speed in milliseconds (lower = faster)
       startDelay: 300,   // Delay before typing starts
-      cursorChar: '<',
+      cursorChar: '|',
       backDelay: 1500,   // Delay before backspacing
-      loop: true,        // Repeat typing loop
+      loop: false,        // Repeat typing loop
     });
   
     return () => typed.destroy();

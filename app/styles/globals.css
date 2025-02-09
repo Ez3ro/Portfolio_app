@@ -273,7 +273,9 @@
   border-radius: calc(var(--border-radius) - var(--border-size));
 }
 
-
+.typed-cursor {
+  color: #64ff5f; /* Change this to your desired color */
+}
 @keyframes spin {
   from {transform: translate(-50%, -50%) rotate(0);}
   to   {transform: translate(-50%, -50%) rotate(360deg);}
