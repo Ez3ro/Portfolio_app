@@ -11,6 +11,10 @@ import dev from '../../public/images/dev2.png';
 import { FiLayers } from "react-icons/fi";
 import { FiCodepen } from "react-icons/fi";
 import { FiUserCheck } from "react-icons/fi";
+import { FiFacebook } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
+import { FiLinkedin } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 interface Project {
   id: number;
   title: string;
@@ -121,71 +125,82 @@ const Home: React.FC = () => {
   </div>
   
 </div>
-      <main className="flex flex-col items-center gap-8 p-5">
+     
         
         
-        <section id="experiences" className="w-full p-10">
-          <h2 className="text-2xl text-center font-semibold text-green-500">Experiences</h2>
-          <div className="mt-4 p-12">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-green-500">Freelance Software Engineer</h3>
-              <h4 className="text-lg text-gray-600">Self-Employed</h4>
-              <p className="mt-2 text-left">
-              As a freelance software engineer, I worked with both local and international clients, delivering custom software solutions across various industries. Key projects include:
-              </p>
-              <ul className="list-disc list-inside mt-2 text-left">
-                <li>
-                  <strong>Enrollment System for School:</strong> I Developed a custom enrollment system for my school, which was adopted and integrated into their operations, along with staff training. This project strengthened my skills in API integration, database management, and full-stack development.
-                </li>
-                <li>
-                  <strong>Parking Lot Tracking System:</strong> Built a real-time parking lot tracker using machine learning for space detection, WebSockets for live updates, and secure authentication methods for mobile access.
-                </li>
-                <li>
-                  <strong>E-commerce Website for a Chocolate School and Store:</strong> Created an e-commerce website for a local chocolate school and store in Makati, integrating payment systems and optimizing the user experience.
-                </li>
-              </ul>
-              <p className="mt-2 text-left">
-                Additionally, my experience extends to Cisco networking, where I designed and implemented network solutions for local devices, enhancing my understanding of networking alongside software development.
-              </p>
-              <p className="mt-2 text-left">
-                Throughout my freelance career, I have developed a broad technical skill set that spans API integration, machine learning, web and mobile development, e-commerce platforms, and network management. I pride myself on delivering high-quality, scalable solutions while maintaining a strong focus on user experience and security.
-              </p>
-            </div>
+        <section id="experiences" className="w-full">
+        <div className="exp-container mx-auto">
+        
+        <div className="experiences-wrapper ">
+        <h2 className="text-xl font-bold z-20 text-lime-400">Experiences in 8+ years</h2>
+        <br />
+
+        <div className="z-20">
+          <p>Free lance Software Engineer - <span className="text-gray-500">Self Employed</span><br />
+          <span className="text-gray-500">2017 - 2021</span>
+          </p>
+          <br />
+          <p>SEO Specialist/API Support  - <span className="text-gray-500">Microsoft Ads</span> 
+          <br />
+          <span className="text-gray-500">2021 - 2022</span>
+          </p>
+          <br />
+          <p>Senior Software Engineer - <span className="text-gray-500">M6 makati</span>
+          <br />
+          <span className="text-gray-500">2022 - 2023</span>
+          </p>
+          <br />
+          <p>SoftWare Engineer - <span className="text-gray-500">WebIt AUS</span>
+          <br />
+          <span className="text-gray-500">2024 - Present</span>
+          </p>
+          <br />
+          <div className="contact-wrapper">
+            <h2 className="text-xl font-bold z-20 text-lime-400 pb-5">Contacts
+            </h2>
+            
+            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiFacebook /><a className="text-xl pl-3 text-gray-500" href="https://www.facebook.com/eze.khiel3"> Facebook.com</a></p>
+            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiGithub/> <a className="text-xl pl-3 text-gray-500" href="https://github.com/Ez3ro"> Github.com</a> </p>
+            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiLinkedin/> <a className="text-xl pl-3 text-gray-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/"> LinkedIn.com</a></p>
+            <p className="text-2xl pb-2 flex flex-row text-lime-400"><FiMail/> <a className="text-xl pl-3 text-gray-500 " href="mailto:Ezekhielofficial@gmail.com"> Ezekhielofficial@gmail.com</a></p>
+
           </div>
-          <hr />
-          <div className="mt-4 p-12">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-green-500">SEO Specialist | Microsoft Ads</h3>
-              <h4 className="text-lg text-gray-600">Microsoft/Majorel</h4>
-              <p className="mt-2 text-left">
-              As an SEO Specialist at Microsoft Ads, I worked closely with developers and business owners to help them integrate Microsoft Ads APIs, track app revenue, and grow their online presence through effective ad strategies. My responsibilities spanned various aspects of digital marketing, from technical integrations to personalized growth strategies for businesses. Key contributions include:
-              </p>
-              <ul className="list-disc list-inside mt-2 text-left">
-                <li>
-                  <strong>API Integration & Revenue Tracking:</strong> Assisted developers in integrating Microsoft Ads APIs into their apps, enabling businesses to track and optimize their ad revenue. This role honed my skills in technical troubleshooting and delivering tailored solutions based on individual business needs.
-                </li>
-                <li>
-                  <strong>Bing Ads Optimization:</strong> Introduced clients to the untapped potential of Bing Ads, optimizing their paid ad campaigns to boost visibility and drive revenue. This involved analyzing campaigns, making data-driven adjustments, and continuously refining strategies.
-                </li>
-                <li>
-                  <strong>SEO & Targeted Ads Strategy:</strong> Collaborated with business owners to improve both on-site and off-site SEO, refining ad targeting strategies to better reach their desired audiences. I led meetings to understand each business's unique goals and effectively align ads with their target markets.
-                </li>
+          
+        </div>
+        </div>
+        <div className="git-wrapper flex flex-col">
+         <h2 className="text-xl z-20 text-lime-400">Github Repositories</h2>
+         <br />
+        <ul>
+                <li> <span className="text-xs text-gray-400"> E-Obra </span></li>
+                <br />
+                <h2></h2>
+                <li><span className="text-xs text-gray-400"> Portfolio_app</span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> student-housing-australia</span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> example-app                </span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> NacomexLive </span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> ServerLivestream </span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> ProjectParking
+                </span></li>
+                <br />
+                <li><span className="text-xs text-gray-400"> ProjectVehicularDataBank-1
+                </span></li>
               </ul>
-              <p className="mt-2 text-left">
-                Additionally, my experience extends to Cisco networking, where I designed and implemented network solutions for local devices, enhancing my understanding of networking alongside software development.
-              </p>
-              <p className="mt-2 text-left">
-              Through my experience, I developed a deep understanding of search engine marketing, audience targeting, and digital growth strategies, helping clients increase their visibility and scale their businesses.
-              </p>
-            </div>
-          </div>
+        
+        </div>
+        </div>
         </section>
 
 
 
         <ProjectsSection projects={projects} />
         
-      </main>
+    
       <footer className="flex justify-center py-8">
       </footer>
     </div>
