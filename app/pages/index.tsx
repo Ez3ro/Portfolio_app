@@ -33,12 +33,7 @@ interface Project {
 
 
 const Home: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
+  
 
   
 
@@ -58,19 +53,7 @@ const Home: React.FC = () => {
     return () => typed.destroy();
   }, []);
 
-  const fetchProjects = async () => {
-    try {
-      const response = await axios.get<Project[]>('/api/projects');
-      if (Array.isArray(response.data)) {
-        setProjects(response.data);
-      } else {
-        setProjects([]);
-      }
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-      setProjects([]);
-    }
-  };
+  
 
   return (
     <div className="background">
