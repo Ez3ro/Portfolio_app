@@ -15,6 +15,13 @@ import { FiSmartphone } from "react-icons/fi";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
+
+import { AiOutlineAppstore } from "react-icons/ai";
+import { AiOutlineDatabase } from "react-icons/ai";
+import { AiOutlineApi } from "react-icons/ai";
+import { AiOutlineRise } from "react-icons/ai";
+import { AiOutlineShop } from "react-icons/ai";
+import { AiOutlineCloudSync } from "react-icons/ai";
 interface Project {
   id: number;
   title: string;
@@ -219,7 +226,55 @@ const Home: React.FC = () => {
 
 
 
-        <ProjectsSection projects={projects} />
+        <div className="skills-wrapper grid grid-cols-12 gap-4 p-10 mt-8">
+        <div className="skills-text z-10 text-4xl"> 
+        Designing solutions <span className="text-gray-500">customized
+          to meet your requirements</span>
+        </div>
+
+        
+        <div className="skills-cards grid grid-cols-1 md:grid-cols-3 gap-6 col-span-12 z-50">
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
+      <span className="text-2xl skill-icon font-bold "><AiOutlineAppstore/></span>
+      <h3 className="text-xl font-bold mb-2">Web and App Development</h3>
+      <p className="text-gray-500">Crafting visually appealing and user-friendly interfaces using <span className="text-cyan-500">HTML</span>, <span className="text-cyan-500">CSS</span>, <span className="text-cyan-500">JavaScript</span>, and modern frameworks like <span className="text-cyan-500">React</span> and <span className="text-cyan-500">Angular</span>.</p>
+    </div>
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300 ">
+    <span className="text-2xl skill-icon font-bold "><AiOutlineDatabase/></span>
+      <h3 className="text-xl font-bold mb-2">Database Management</h3>
+      <p className="text-gray-500">Designing and managing databases with SQL and NoSQL technologies such as  
+      <span className="text-cyan-500"> MySQL</span>, 
+      <span className="text-cyan-500"> PostgreSQL</span>, and 
+      <span className="text-cyan-500"> MongoDB</span>.</p>
+    </div>
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
+    <span className="text-2xl skill-icon font-bold "><AiOutlineApi/></span>
+      <h3 className="text-xl font-bold mb-2">API Development</h3>
+      <p className="text-gray-500">Creating and integrating <span className="text-cyan-500">RESTful APIs</span> to enable smooth communication between <span className="text-cyan-500">front-end</span> and <span className="text-cyan-500">back-end</span> systems.</p>
+    </div>
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
+    <span className="text-2xl skill-icon font-bold hover:border-lime-400 transition-transform transform hover:scale-105 duration-300 "><AiOutlineRise/></span>
+      <h3 className="text-xl font-bold mb-2">Performance Optimization</h3>
+      <p className="text-gray-500">Improving the speed and performance of web applications to provide a better user experience. Work with <span className="text-cyan-500">Django</span>, <span className="text-cyan-500">Python</span>.</p>
+    </div>
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
+    
+    <span className="text-2xl skill-icon font-bold "><AiOutlineShop/></span>
+      <h3 className="text-xl font-bold mb-2">E-commerce Solutions</h3>
+      <p className="text-gray-500">Developing scalable and secure payment solutions for <span className="text-cyan-500">e-commerce platforms</span> tailored to your business needs.</p>
+    </div>
+    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
+    <span className="text-2xl skill-icon font-bold "><AiOutlineCloudSync/></span>
+      <h3 className="text-xl font-bold mb-2">Integrating APIs</h3>
+      <p className="text-gray-500">Seamlessly integrating <span className="text-cyan-500">third-party APIs</span> into existing applications.</p>
+    </div>
+  </div>
+  <div className="skills-text z-10 "> 
+  Excited to take on new projects and collaborate.
+  Let's chat about your ideas. <span className="text-lime-400">Reach out!</span>
+        </div>
+       
+      </div>
         
     
       <footer className="flex justify-center py-8">

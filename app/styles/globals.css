@@ -273,6 +273,78 @@
   border-radius: calc(var(--border-radius) - var(--border-size));
 }
 
+.skills-wrapper {
+  --border-radius: 10px;
+  --border-size: 1px;
+  --border-bg: conic-gradient(from 0deg,
+   #3b413d 0%,#3b413d 40%, #64ff5f 50%,#3b413d 60%,#3b413d 100%);
+  --padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  background-color: #272730;
+  min-height: 632px;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 1316px; /* Set a max-width for the wrapper */
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-width: 0px;
+  border-color: #3b413d;
+  position: relative; 
+  padding: calc(var(--padding) + var(--border-size));
+  border-radius: var(--border-radius);
+  z-index: 10;/* Required for the pseudo-element */
+}
+.skills-wrapper::before {
+  border-style: hidden;
+  content: '';
+  display: block;
+  background: var(--border-bg);
+  width: calc(100% * 7.41421356237);
+  padding-bottom: calc(100% * 7.41421356237);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  animation: spin 8s linear infinite;
+}
+.skills-wrapper::after {
+  border-style: hidden;
+  content: '';
+  position: absolute;
+  inset: var(--border-size);
+  border-width: 0.1px;
+  border-color: #272730;
+  background: #272730;
+  
+  border-radius: calc(var(--border-radius) - var(--border-size));
+}
+.skills-text {
+  margin: 1.5rem;
+  text-align: center;
+  max-width: 600px;
+ 
+}
+
+.skill-card{
+  background: #272730;
+  border-color: #3b413d;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 93px 42px 42px;
+  max-width: 395px;
+  height: auto;
+  font-size: 15px;
+}
+.skill-card:hover .skill-icon {
+  color: #64ff5f; /* Green color */
+}
+
 .typed-cursor {
   color: #64ff5f; /* Change this to your desired color */
 }
