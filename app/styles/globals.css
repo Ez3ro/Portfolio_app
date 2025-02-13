@@ -355,6 +355,8 @@
 
 .background{
   
+  flex: auto;
+  align-items: center;
   padding: 2rem;
   background-image: url('/images/bg-dark.png');
   background-repeat: no-repeat; /* Prevent the background image from repeating */
@@ -459,6 +461,17 @@
     padding: 1rem; /* Add padding to ensure content stays within the wrapper */
     
     height: auto; /* Include padding and border in the element's total width and height */
+  }
+  .skills-wrapper {
+    flex-direction: column; /* Switch to column layout on smaller screens */
+    max-width: 100%;
+    margin: 1rem; /* Adjust margins for smaller screens */
+    padding: 1rem; /* Add padding to ensure content stays within the wrapper */
+    
+    height: auto; /* Include padding and border in the element's total width and height */
+    .skills-text{
+      font-size: 25px;
+    }
   }
   .text-4xl {
     font-size: 50px;

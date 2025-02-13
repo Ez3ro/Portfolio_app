@@ -228,7 +228,7 @@ const Home: React.FC = () => {
 
         <div className="skills-wrapper grid grid-cols-12 gap-4 p-10 mt-8">
         <div className="skills-text z-10 text-4xl"> 
-        Designing solutions <span className="text-gray-500">customized
+        Designing solutions <span className="text-gray-500 ">customized
           to meet your requirements</span>
         </div>
 
