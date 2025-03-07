@@ -15,7 +15,7 @@ import { FiSmartphone } from "react-icons/fi";
 import { FiGithub } from "react-icons/fi";
 import { FiLinkedin } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
-
+import ProjectsCarousel from '../components/projectCarousel';
 import { AiOutlineAppstore } from "react-icons/ai";
 import { AiOutlineDatabase } from "react-icons/ai";
 import { AiOutlineApi } from "react-icons/ai";
@@ -27,10 +27,63 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  technologies?: string[];
+  link?: string;
 }
 
 
-
+const projects: Project[] = [
+  
+  {
+    id: 1,
+    title: "Cacao Lavezares",
+    description: "E-commerce platform for a local chocolate brand, featuring a user-friendly interface and secure payment processing.",
+    image: "/images/cacaolav.png", // Replace with your actual image path
+    technologies: ["Laravel", "PHP", "MySql", "BootStrap","WordPress","WooCommerce","Elementor"],
+    link: "https://cacaolavezares.com/"
+  },
+  {
+    id: 2,
+    title: "PRD RealEstate ",
+    description: "Real estate platform with advanced search filters and booking capabilities for properties across Australia, Multisite and Multilanguage for PRD Nationwide.",
+    image: "/images/PRD.png", // Replace with a different image when available
+    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis", "JavaScript", "HTML", "CSS"],
+    link: "https://www.prd.com.au/"
+  },
+  {
+    id: 3,
+    title: "RTEdgar RealEstate",
+    description: "RT Edgar is a premier real estate agency in Victoria, Australia, with over 125 years of experience specializing in high-end properties across Metro Melbourne and regional areas. They offer comprehensive services, including project marketing and end-to-end solutions for building projects, from boutique residential homes to multi-level developments.",
+    image: "/images/RTE.png", // Replace with a different image when available
+    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis", "JavaScript", "HTML", "CSS"],
+    link: "https://www.rtedgar.com/"
+  },
+  {
+    id: 4,
+    title: "Nacomex Live",
+    description: "A live streaming website for local gaming events, featuring real-time chat and multi-stream viewing capabilities and multi streaming to any streaming platform.",
+    image: "/images/Nacomexlive.png", // Replace with a different image when available
+    technologies: ["Vue.js", "PHP", "PostgreSQL", "Stripe API", "webSockets", "Node.js", "Express", "Socket.IO"],
+    link: ""
+  },
+  {
+    id: 5,
+    title: "Vehicular Data Bank",
+    description: "A real-time data visualization platform for monitoring vehicular parking and traffic data, featuring a user-friendly interface and advanced analytics.",
+    image: "/images/vdb.png", // Replace with a different image when available
+    technologies: ["WebSockets", "Python", "Django", "PostgreSQL", "Redis", "JavaScript", "HTML", "CSS", "pytz", "pynum", "TensorFlow", "Keras"],
+    link: ""
+  },
+  {
+    id: 6,
+    title: "Animal Del Deporte",
+    description: "A basic website for a local sports club, featuring a user-friendly interface and news updates.",
+    image: "/images/Animaldeldeporte.png", // Replace with a different image when available
+    technologies: ["WebSockets", "Node.js", "Express", "Socket.IO"],
+    link: ""
+  }
+  
+];
 
 const Home: React.FC = () => {
   
@@ -258,6 +311,8 @@ const Home: React.FC = () => {
         </div>
        
       </div>
+
+      <ProjectsCarousel projects={projects} />
         
     
       <footer className="flex justify-center py-8">
