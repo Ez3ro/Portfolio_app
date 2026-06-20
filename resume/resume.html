@@ -1,0 +1,259 @@
+<!--
+  ATS-friendly resume for Ezekhiel Paras.
+  Design rules followed so automated screeners parse it cleanly:
+   - Single column, no tables / text boxes / multi-column layout
+   - Standard section headings (Summary, Skills, Experience, Education)
+   - Real selectable text, normal word spacing, a common system font
+   - Each role = Title, Company, Location, Dates on their own lines, then bullets
+   - Action verbs + quantified results; no first-person "I"
+  To export: open this file in a browser -> Print -> "Save as PDF"
+  (A4 or Letter, default margins, "Background graphics" can stay off).
+-->
+<meta charset="utf-8" />
+<title>Ezekhiel Paras - Resume</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #555;
+    --rule: #cdcdcd;
+    --accent: #1f6feb;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in 0.6in;
+    background: #fff;
+  }
+
+  /*  Header  */
+  header { text-align: center; margin-bottom: 14px; }
+  h1 {
+    font-size: 22pt;
+    margin: 0 0 4px;
+    letter-spacing: 0.5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .title-line {
+    font-size: 11pt;
+    color: var(--accent);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0 6px;
+    font-weight: bold;
+  }
+  .contact {
+    font-size: 9.5pt;
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .contact a { color: var(--muted); text-decoration: none; }
+  .contact span { white-space: nowrap; }
+  .sep { margin: 0 6px; color: var(--rule); }
+
+  /*  Sections  */
+  section { margin-top: 14px; }
+  h2 {
+    font-size: 11pt;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 3px;
+    margin: 0 0 8px;
+  }
+
+  p.summary { margin: 0; text-align: justify; }
+
+  /*  Experience  */
+  .job { margin-bottom: 12px; page-break-inside: avoid; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .job-title { font-weight: bold; font-size: 10.5pt; }
+  .job-dates { color: var(--muted); font-size: 9.5pt; white-space: nowrap; }
+  .job-sub {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 10pt;
+    margin: 1px 0 5px;
+  }
+  ul { margin: 4px 0 0; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+
+  /*  Skills  */
+  .skills-grid p { margin: 0 0 4px; }
+  .skills-grid .cat {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  /*  Education  */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .edu-school { font-weight: bold; font-size: 10.5pt; }
+  .edu-detail { color: var(--muted); font-style: italic; }
+  .edu-dates { color: var(--muted); font-size: 9.5pt; white-space: nowrap; }
+
+  @media print {
+    body { padding: 0.5in 0.55in; }
+    a { color: var(--ink); }
+  }
+</style>
+
+<header>
+  <h1>Selwyn Ezekhiel Paras</h1>
+  <p class="title-line">Senior Full-Stack &amp; Backend Web Developer</p>
+  <p class="contact">
+    <span>Tarlac City, Philippines</span>
+    <span class="sep">|</span>
+    <span><a href="mailto:EzekhielOfficial@gmail.com">EzekhielOfficial@gmail.com</a></span>
+    <span class="sep">|</span>
+    <span>+63 967 388 1201</span>
+    <br />
+    <span><a href="https://www.linkedin.com/in/ezekhiel-paras-23b584355/">linkedin.com/in/ezekhiel-paras</a></span>
+    <span class="sep">|</span>
+    <span><a href="https://github.com/Ez3ro">github.com/Ez3ro</a></span>
+    <span class="sep">|</span>
+    <span><a href="https://ezekhiel-p.vercel.app/">ezekhiel-p.vercel.app</a></span>
+  </p>
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p class="summary">
+    Senior Full-Stack and Backend Web Developer with 8+ years of experience building, scaling,
+    and maintaining production web applications. Specialised in Python (Django, FastAPI) and
+    PHP (Laravel), with proven results designing REST APIs, optimising backend performance, and
+    deploying cloud-based systems with Docker and Kubernetes. Track record of owning features
+    end-to-end and delivering measurable business impact across e-commerce, real estate, and
+    real-time streaming platforms.
+  </p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <p><span class="cat">Languages:</span> Python, PHP, JavaScript, TypeScript, SQL, HTML, CSS/SASS</p>
+    <p><span class="cat">Backend &amp; Frameworks:</span> Django, FastAPI, Laravel, Node.js, REST APIs, WebSockets</p>
+    <p><span class="cat">Frontend:</span> React, Next.js, Vue.js, responsive UI development</p>
+    <p><span class="cat">Databases:</span> PostgreSQL, MySQL, Redis, Elasticsearch</p>
+    <p><span class="cat">Cloud &amp; DevOps:</span> Docker, Kubernetes, AWS, VPS deployment, CI/CD</p>
+    <p><span class="cat">Other:</span> RTMP streaming, third-party API integration, Technical SEO, performance optimisation</p>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Senior System Integration Engineer</span>
+      <span class="job-dates">2026 - Present</span>
+    </div>
+    <p class="job-sub">Opera Beds - United Kingdom</p>
+    <ul>
+      <li>Design and build system integrations connecting core business platforms (ERP, CRM, e-commerce, and middleware), ensuring reliable data flow across the stack.</li>
+      <li>Develop and maintain backend services and data pipelines that support integration workflows and business operations.</li>
+      <li>Automate manual business processes between platforms, reducing operational overhead and eliminating repetitive data entry.</li>
+      <li>Collaborate cross-functionally to translate operational requirements into stable, maintainable integration solutions.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Software Engineer</span>
+      <span class="job-dates">Nov 2024 - 2026</span>
+    </div>
+    <p class="job-sub">Offsure / WebIt - Remote (Australia)</p>
+    <ul>
+      <li>Developed and enhanced backend features for client-facing web applications based on business requirements, working across Python/Django and React stacks.</li>
+      <li>Designed and implemented a scalable API integration for real-estate listing management that improved data-retrieval speed by 30% and reduced operational overhead for client companies.</li>
+      <li>Integrated multiple third-party APIs, improving overall data-retrieval performance by ~30%.</li>
+      <li>Reviewed peer code to improve readability, maintainability, and scalability across the team.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Web Developer</span>
+      <span class="job-dates">2023</span>
+    </div>
+    <p class="job-sub">Market Role Asia Pacific Inc. - Nacomex Live</p>
+    <ul>
+      <li>Designed and deployed a scalable RTMP live-streaming infrastructure using Docker and Kubernetes on VPS cloud servers, with Kubernetes load balancing for concurrent-user scale.</li>
+      <li>Implemented Laravel WebSocket servers for real-time chat, enabling interactive live-stream user engagement.</li>
+      <li>Improved platform reliability and scalability under high concurrent user load.</li>
+      <li>Built and maintained company news sites (Golasa.co.com, Futbolfantastico.com) in WordPress with custom plugins, reaching 1.1k organic visits within the first month.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Search Optimization &amp; Automation Engineer</span>
+      <span class="job-dates">2022 - 2023</span>
+    </div>
+    <p class="job-sub">Majorel - Microsoft Advertising (Client)</p>
+    <ul>
+      <li>Achieved a 25% increase in client conversion rates through strategic keyword targeting and data-driven ad-campaign optimisation for Microsoft Advertising clients.</li>
+      <li>Supported new advertisers in optimising accounts for maximum conversions and customer reach.</li>
+      <li>Automated the case-noting process so any advocate could instantly see a customer's prior issue history, reducing resolution time on repeat contacts.</li>
+      <li>Consistently exceeded performance metrics from the first month of employment, earning performance incentives.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Web Developer</span>
+      <span class="job-dates">Feb 2018 - Apr 2020</span>
+    </div>
+    <p class="job-sub">Woebisoft Innovative Solutions</p>
+    <ul>
+      <li>Built backend features for outsourced client web applications alongside a team of developers.</li>
+      <li>Developed an e-commerce website for a local company, handling both build and delivery.</li>
+      <li>Collaborated with other programmers across multiple concurrent client projects.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Freelance Web Developer</span>
+      <span class="job-dates">Jan 2017 - Jul 2018</span>
+    </div>
+    <p class="job-sub">Self-Employed</p>
+    <ul>
+      <li>Built a computer-vision parking-analysis system in Python/Django with TensorFlow that detected open parking spaces and relayed availability to drivers' mobile devices.</li>
+      <li>Developed and launched cacaolavezares.com, an e-commerce site for a local chocolate brand.</li>
+      <li>Created point-of-sale and inventory-management applications for local businesses.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu-row">
+    <span><span class="edu-school">Tarlac State University</span> - <span class="edu-detail">BS Computer Science</span></span>
+    <span class="edu-dates">2019 - 2022</span>
+  </div>
+  <div class="edu-row">
+    <span><span class="edu-school">AMA Computer College</span> - <span class="edu-detail">Senior High School</span></span>
+    <span class="edu-dates">2017 - 2019</span>
+  </div>
+  <div class="edu-row">
+    <span><span class="edu-school">ICT Colleges</span> - <span class="edu-detail">Technical Vocational Course (NC II)</span></span>
+    <span class="edu-dates">2017 - 2019</span>
+  </div>
+</section>

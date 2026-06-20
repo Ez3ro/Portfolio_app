@@ -67,11 +67,12 @@ const projects: Project[] = [
 ];
 
 const experiences = [
-  { role: "Senior System Integration Engineer", company: "Opera Beds",     period: "2026 – Present" },
-  { role: "Software Engineer",                   company: "WebIt AUS",      period: "2020 – 2026" },
-  { role: "Senior Software Engineer",            company: "M6 Makati",      period: "2019 – 2020" },
-  { role: "SEO Specialist / API Support",        company: "Microsoft Ads",  period: "2018 – 2019" },
-  { role: "Freelance Software Engineer",         company: "Self Employed",  period: "2016 – 2018" },
+  { role: "Senior System Integration Engineer",   company: "Opera Beds",                  period: "2026 – Present" },
+  { role: "Software Engineer",                     company: "Offsure / WebIt",             period: "Nov 2024 – 2026" },
+  { role: "Web Developer",                         company: "Market Role Asia Pacific",    period: "2023" },
+  { role: "Search Optimization & Automation Eng.", company: "Majorel (Microsoft Ads)",     period: "2022 – 2023" },
+  { role: "Web Developer",                         company: "Woebisoft Innovative",        period: "Feb 2018 – Apr 2020" },
+  { role: "Freelance Web Developer",               company: "Self-Employed",               period: "Jan 2017 – Jul 2018" },
 ];
 
 // Real public repos (github.com/Ez3ro) — most recently updated first
