@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate && prisma migrate deploy"
+    "postinstall": "echo skipping prisma"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
@@ -15,7 +15,7 @@
     "cloudinary": "^2.5.1",
     "dotenv": "^16.4.7",
     "multer": "^1.4.5-lts.1",
-    "next": "15.1.11",
+    "next": "^15.1.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-typed": "^2.0.12"

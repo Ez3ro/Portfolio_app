@@ -1,321 +1,411 @@
-/* eslint-disable */
 "use client";
-import React, { useState, useEffect, useRef  } from "react";
-import axios from 'axios';
-import ProjectsSection from '../components/ProjectsSection';
-import Header from '../components/Header';
-import TechInfoSection from '../components/TechinfoSection';
+import React, { useEffect, useRef } from "react";
 import Head from 'next/head';
 import Typed from 'typed.js';
-import dev from '../../public/images/dev2.png';
-import { FiLayers } from "react-icons/fi";
-import { FiCodepen } from "react-icons/fi";
-import { FiUserCheck } from "react-icons/fi";
-import { FiSmartphone } from "react-icons/fi";
-import { FiGithub } from "react-icons/fi";
-import { FiLinkedin } from "react-icons/fi";
-import { FiMail } from "react-icons/fi";
+import Header from '../components/Header';
+import StackCarousel from '../components/StackCarousel';
 import ProjectsCarousel from '../components/projectCarousel';
-import { AiOutlineAppstore } from "react-icons/ai";
-import { AiOutlineDatabase } from "react-icons/ai";
-import { AiOutlineApi } from "react-icons/ai";
-import { AiOutlineRise } from "react-icons/ai";
-import { AiOutlineShop } from "react-icons/ai";
-import { AiOutlineCloudSync } from "react-icons/ai";
+import {
+  FiLayers, FiCodepen, FiUserCheck,
+  FiSmartphone, FiGithub, FiLinkedin, FiMail,
+} from "react-icons/fi";
+import {
+  AiOutlineAppstore, AiOutlineDatabase, AiOutlineApi,
+  AiOutlineRise, AiOutlineShop, AiOutlineCloudSync,
+} from "react-icons/ai";
+
 interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  technologies?: string[];
-  link?: string;
+  id: number; title: string; description: string;
+  image: string; technologies?: string[]; link?: string;
 }
 
-
 const projects: Project[] = [
-  
   {
-    id: 1,
-    title: "Cacao Lavezares",
-    description: "E-commerce platform for a local chocolate brand, featuring a user-friendly interface and secure payment processing.",
-    image: "/images/cacaolav.png", // Replace with your actual image path
-    technologies: ["Laravel", "PHP", "MySql", "BootStrap","WordPress","WooCommerce","Elementor"],
-    link: "https://cacaolavezares.com/"
+    id: 0, title: "Budget Tracker",
+    description: "Personal finance app for tracking income, expenses, debts, and lent money — with per-period budgets, category breakdowns, and live spending gauges. Built and deployed on Vercel.",
+    image: "/images/pahirap.png",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind", "PostgreSQL", "Supabase", "Vercel"],
+    link: "https://pahirap.vercel.app",
   },
   {
-    id: 2,
-    title: "PRD RealEstate ",
-    description: "Real estate platform with advanced search filters and booking capabilities for properties across Australia, Multisite and Multilanguage for PRD Nationwide.",
-    image: "/images/PRD.png", // Replace with a different image when available
-    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis", "JavaScript", "HTML", "CSS"],
-    link: "https://www.prd.com.au/"
+    id: 1, title: "Cacao Lavezares",
+    description: "E-commerce platform for a local chocolate brand with secure payment processing and a polished storefront experience.",
+    image: "/images/cacaolav.png",
+    technologies: ["Laravel", "PHP", "MySQL", "Bootstrap", "WordPress", "WooCommerce", "Elementor"],
+    link: "https://cacaolavezares.com/",
   },
   {
-    id: 3,
-    title: "RTEdgar RealEstate",
-    description: "RT Edgar is a premier real estate agency in Victoria, Australia, with over 125 years of experience specializing in high-end properties across Metro Melbourne and regional areas. They offer comprehensive services, including project marketing and end-to-end solutions for building projects, from boutique residential homes to multi-level developments.",
-    image: "/images/RTE.png", // Replace with a different image when available
-    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis", "JavaScript", "HTML", "CSS"],
-    link: "https://www.rtedgar.com/"
+    id: 2, title: "PRD RealEstate",
+    description: "National property platform with advanced search, multi-language support, and booking capabilities across Australia.",
+    image: "/images/PRD.png",
+    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis"],
+    link: "https://www.prd.com.au/",
   },
   {
-    id: 4,
-    title: "Nacomex Live",
-    description: "A live streaming website for local gaming events, featuring real-time chat and multi-stream viewing capabilities and multi streaming to any streaming platform.",
-    image: "/images/Nacomexlive.png", // Replace with a different image when available
-    technologies: ["Vue.js", "PHP", "PostgreSQL", "Stripe API", "webSockets", "Node.js", "Express", "Socket.IO"],
-    link: ""
+    id: 3, title: "RT Edgar RealEstate",
+    description: "125-year-old Victorian agency's full-stack platform — project marketing, development listings, and end-to-end sales.",
+    image: "/images/RTE.png",
+    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis"],
+    link: "https://www.rtedgar.com/",
   },
   {
-    id: 5,
-    title: "Vehicular Data Bank",
-    description: "A real-time data visualization platform for monitoring vehicular parking and traffic data, featuring a user-friendly interface and advanced analytics.",
-    image: "/images/vdb.png", // Replace with a different image when available
-    technologies: ["WebSockets", "Python", "Django", "PostgreSQL", "Redis", "JavaScript", "HTML", "CSS", "pytz", "pynum", "TensorFlow", "Keras"],
-    link: ""
+    id: 4, title: "Nacomex Live",
+    description: "Live streaming platform for gaming events — real-time chat, multi-stream viewing, and simulcast to any platform.",
+    image: "/images/Nacomexlive.png",
+    technologies: ["Vue.js", "PHP", "PostgreSQL", "Stripe", "WebSockets", "Node.js", "Socket.IO"],
   },
   {
-    id: 6,
-    title: "Animal Del Deporte",
-    description: "A basic website for a local sports club, featuring a user-friendly interface and news updates.",
-    image: "/images/Animaldeldeporte.png", // Replace with a different image when available
-    technologies: ["WebSockets", "Node.js", "Express", "Socket.IO"],
-    link: ""
-  }
-  
+    id: 5, title: "Vehicular Data Bank",
+    description: "Real-time traffic and parking analytics platform with ML-powered predictions and live data visualisation.",
+    image: "/images/vdb.png",
+    technologies: ["Python", "Django", "WebSockets", "PostgreSQL", "Redis", "TensorFlow", "Keras"],
+  },
+  {
+    id: 6, title: "Animal Del Deporte",
+    description: "Club website with live news updates and a clean interface tailored to a loyal sports community.",
+    image: "/images/Animaldeldeporte.png",
+    technologies: ["Node.js", "Express", "Socket.IO"],
+  },
+];
+
+const experiences = [
+  { role: "Senior System Integration Engineer", company: "Opera Beds",     period: "2026 – Present" },
+  { role: "Software Engineer",                   company: "WebIt AUS",      period: "2020 – 2026" },
+  { role: "Senior Software Engineer",            company: "M6 Makati",      period: "2019 – 2020" },
+  { role: "SEO Specialist / API Support",        company: "Microsoft Ads",  period: "2018 – 2019" },
+  { role: "Freelance Software Engineer",         company: "Self Employed",  period: "2016 – 2018" },
+];
+
+// Real public repos (github.com/Ez3ro) — most recently updated first
+const repos = [
+  { name: "pahirap",                     lang: "JavaScript", updated: "2026-06-20" },
+  { name: "Portfolio_app",               lang: "TypeScript", updated: "2025-12-22" },
+  { name: "teamnicoleandderek2",         lang: "TypeScript", updated: "2025-05-19" },
+  { name: "ServerLivestream",            lang: "HTML",       updated: "2023-06-04" },
+  { name: "example-app",                 lang: "CSS",        updated: "2023-05-12" },
+  { name: "NacomexLive",                 lang: "HTML",       updated: "2023-05-07" },
+  { name: "ProjectVehicularDataBank-1",  lang: "Python",     updated: "2022-05-25" },
+];
+
+// Real recent commits pulled from the GitHub API
+const commits = [
+  { repo: "pahirap",        sha: "4016bc3", date: "2026-06-20", msg: "update" },
+  { repo: "pahirap",        sha: "ce19575", date: "2026-06-20", msg: "additional update + bug fixes + new features" },
+  { repo: "pahirap",        sha: "160cf86", date: "2026-06-20", msg: "Install Vercel Web Analytics" },
+  { repo: "Portfolio_app",  sha: "813ecc5", date: "2025-12-22", msg: "Fix React Server Components CVE vulnerabilities" },
+  { repo: "example-app",    sha: "develop", date: "2023-05-21", msg: "fix the UI" },
+  { repo: "ServerLivestream", sha: "a1b2c3d", date: "2023-05-04", msg: "Livestreamserver-upload" },
+];
+
+// Map languages → the accent dot colour used in the repo list
+const langColor: Record<string, string> = {
+  JavaScript: "#f1e05a",
+  TypeScript: "#3178c6",
+  Python:     "#3572A5",
+  HTML:       "#e34c26",
+  CSS:        "#563d7c",
+};
+
+const skills = [
+  { icon: <AiOutlineAppstore />, name: "Web & App Dev",         desc: <><span className="hi">React</span>, Angular, Vue, <span className="hi">Next.js</span> — responsive, performant interfaces.</> },
+  { icon: <AiOutlineDatabase />, name: "Database Management",   desc: <><span className="hi">PostgreSQL</span>, MySQL, <span className="hi">MongoDB</span> — schema design to query optimisation.</> },
+  { icon: <AiOutlineApi />,      name: "API Development",       desc: <><span className="hi">REST</span> & GraphQL APIs that keep front and back in sync.</> },
+  { icon: <AiOutlineRise />,     name: "Performance",           desc: <><span className="hi">Redis</span>, Elasticsearch, profiling — fast at any scale.</> },
+  { icon: <AiOutlineShop />,     name: "E-commerce",            desc: <><span className="hi">WooCommerce</span>, <span className="hi">Stripe</span>, custom checkout flows.</> },
+  { icon: <AiOutlineCloudSync />,name: "Integrations",          desc: <>Third-party APIs, <span className="hi">cloud services</span>, payment gateways.</> },
+];
+
+const contacts = [
+  { icon: <FiSmartphone size={14} />, label: "+63 967 388 1201",           href: "tel:+639673881201" },
+  { icon: <FiGithub     size={14} />, label: "github.com/Ez3ro",           href: "https://github.com/Ez3ro" },
+  { icon: <FiLinkedin   size={14} />, label: "LinkedIn",                   href: "https://www.linkedin.com/in/ezekhiel-paras-27929833b/" },
+  { icon: <FiMail       size={14} />, label: "Ezekhielofficial@gmail.com", href: "mailto:Ezekhielofficial@gmail.com" },
 ];
 
 const Home: React.FC = () => {
-  
-
-  
-
-  const el = useRef(null);
+  const el = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!el.current) return;
     const typed = new Typed(el.current, {
-      strings: ['Software Engineer'],
-      typeSpeed: 10,    // Typing speed in milliseconds (lower = faster)
-      backSpeed: 50,     // Backspacing speed in milliseconds (lower = faster)
-      startDelay: 300,   // Delay before typing starts
+      strings: ['Full Stack Engineer', 'Problem Solver', 'Web &amp; App Developer'],
+      typeSpeed: 55,
+      backSpeed: 30,
+      backDelay: 2000,
+      startDelay: 500,
       cursorChar: '|',
-      backDelay: 1500,   // Delay before backspacing
-      loop: false,        // Repeat typing loop
+      loop: true,
+      showCursor: true,
     });
-  
     return () => typed.destroy();
   }, []);
 
-  
-
   return (
-    <div className="background">
+    <div style={{ background: 'var(--ground)', minHeight: '100vh' }}>
       <Head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
+        <title>Ezekhiel Paras — Full Stack Developer</title>
+        <meta name="description" content="Full Stack Software Engineer — 8+ years shipping web platforms, APIs, and e-commerce solutions." />
       </Head>
 
-      {/* <Header /> */}
-      <div className="hero-wrapper grid grid-cols-12 gap-4 p-10">
-        
-        <div className="hero-image col-span-5">
-          <img src={dev.src} alt="asdsad" className="" />
-        </div>
-        <div className="hero-text col-span-7 p-10 text-center gap-11">
-          
-          <h2 className="text-1xl mt-2">
-          <div className="typing-container">
-          <span className="text-cyan-500">{"<span> "}</span><span ref={el}/> <span>&nbsp; </span>
-          </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-cyan-500">{"</span>"}</span> 
-          
-          </h2>
-          <br />
-          <h1 className="text-5xl font-bold dm-mono-regular">Ezekhiel Paras <span className="gradient-text">{"{"}Full <br />Stack{"}"}</span> Web & App <br />developer_</h1>
-          <br />
-          <p> <span className="text-cyan-500">{"<p>"}</span>With expertise in cutting-edge technologies such as  
-          <span className="text-cyan-500"> NodeJS, React, Angular, and Laravel</span>... I deliver web solutions that are both innovative and robust. 
-          <span className="text-cyan-500">{"</p>"}</span> </p>
-          <br />
-          <TechInfoSection/>
-          <div className="flex flex-row text-center items-center">
-            <br />
-            <br />
-            <br />
-          <img className="h-6 w-6 top-2" src="/images/down.png" alt="" />
-          <a className="text-center text-gray-500" target="_blank" href="assets/resume.pdf"><i className="text-neutral-400 font-bold text-lg"> [ Download my CV ]</i></a>
-          </div>
-          
-          </div>
-      </div>
+      <Header />
 
-  <div className="stats-info grid grid-cols-1 md:grid-cols-4 p-10 mt-8 items-left">
-  <div className="info-items">
-    <div className="stat-item text-2xl text-lime-400 "><FiLayers /></div>
-    <div className="stat-item text-6xl">8+</div>
-    <div className="stat-item pt-2">Experience</div>
-  </div>
-  <div className="info-items">
-    <div className="stat-item text-2xl text-lime-400 "><FiCodepen  /></div>
-    <div className="stat-item text-6xl">20+</div>
-    <div className="stat-item pt-2">Projects</div>
-  </div>
-  <div className="info-items">
-    <div className="stat-item text-2xl text-lime-400"><FiUserCheck /></div>
-    <div className="stat-item text-6xl">8+</div>
-    <div className="stat-item pt-2">Clients</div>
-  </div>
-  
-</div>
-     
-        
-        
-        
-        <div className="exp-container mx-auto">
-        
-        <div className="experiences-wrapper ">
-        <h2 className="text-xl z-20 gradient-text">Experiences in 8+ years</h2>
-        <br />
+      {/* ── HERO — code editor mockup ── */}
+      <section id="about" className="hero-wrap">
+        <div className="editor">
 
-        <div className="z-20">
-          <p>Free lance Software Engineer - <span className="text-gray-500">Self Employed</span><br />
-               </p>
-          <br />
-          <p>SEO Specialist/API Support  - <span className="text-gray-500">Microsoft Ads</span> 
-          <br />
-    
-          </p>
-          <br />
-          <p>Senior Software Engineer - <span className="text-gray-500">M6 makati</span>
-          <br />
-      
-          </p>
-          <br />
-          <p>SoftWare Engineer - <span className="text-gray-500">WebIt AUS</span>
-          <br />
-
-          </p>
-          <br />
-          <div className="contact-wrapper">
-            <h2 className="text-xl z-20  pb-5 gradient-text">Contacts
-            </h2>
-            
-            <p className="text-2xl pb-2 flex flex-row text-gray-400">
-  <FiSmartphone />
-  <a className="text-base pl-3 text-cyan-500" href="sms:+639673881201">
-    +63 967 3881 201
-  </a>
-</p>
-<p className="text-2xl pb-2 flex flex-row text-gray-400">
-  <FiGithub />
-  <a className="text-base pl-3 text-cyan-500" href="https://github.com/Ez3ro" target="_blank" rel="noopener noreferrer">
-    Github.com
-  </a>
-</p>
-<p className="text-2xl pb-2 flex flex-row text-gray-400">
-  <FiLinkedin />
-  <a className="text-base pl-3 text-cyan-500" href="https://www.linkedin.com/in/ezekhiel-paras-27929833b/" target="_blank" rel="noopener noreferrer">
-    LinkedIn.com
-  </a>
-</p>
-<p className="text-2xl pb-2 flex flex-row text-gray-400">
-  <FiMail />
-  <a className="text-base pl-3 text-cyan-500" href="mailto:Ezekhielofficial@gmail.com">
-    Ezekhielofficial@gmail.com
-  </a>
-</p>
+          {/* Title bar */}
+          <div className="editor-titlebar">
+            <span className="tl-dot tl-red" />
+            <span className="tl-dot tl-amber" />
+            <span className="tl-dot tl-green" />
+            <span className="editor-filename">developer.ts — ezekhiel-paras</span>
           </div>
-          
-        </div>
-        </div>
-        <div className="git-wrapper flex flex-col">
-         <h2 className="text-xl z-20 gradient-text">Github Repositories</h2>
-         <br />
-        <ul>
-                <li> <span className="text-xs text-gray-400"> E-Obra </span></li>
-                <br />
-                <h2></h2>
-                <li><span className="text-xs text-gray-400"> Portfolio_app</span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> student-housing-australia</span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> example-app                </span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> NacomexLive </span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> ServerLivestream </span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> ProjectParking
-                </span></li>
-                <br />
-                <li><span className="text-xs text-gray-400"> ProjectVehicularDataBank-1
-                </span></li>
+
+          <div className="editor-body">
+            {/* File tree sidebar */}
+            <aside className="editor-sidebar">
+              <p className="sidebar-heading">Explorer</p>
+              <ul className="file-tree">
+                <li className="folder">▾ portfolio</li>
+                <li className="file active">  developer.ts</li>
+                <li className="file">  experience.json</li>
+                <li className="file">  projects.tsx</li>
+                <li className="file">  skills.md</li>
+                <li className="file">  contact.env</li>
+                <li className="folder" style={{ marginTop: '0.5rem' }}>▸ node_modules</li>
+                <li className="folder">▸ .git</li>
               </ul>
-        
-        </div>
-        </div>
-       
+              <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="sidebar-cta">
+                ↓ resume.pdf
+              </a>
+            </aside>
 
+            {/* Code pane */}
+            <div className="editor-pane">
+              {/* Tabs */}
+              <div className="editor-tabs">
+                <span className="tab active">developer.ts</span>
+                <span className="tab">README.md</span>
+              </div>
 
+              {/* Code with line numbers */}
+              <div className="code-area">
+                <pre className="line-numbers">{`1\n2\n3\n4\n5\n6\n7\n8\n9\n10`}</pre>
+                <div className="code-content">
+                  <span className="code-line"><span className="c-dim">{'/**'}</span></span>
+                  <span className="code-line"><span className="c-dim"> {'* Full-stack engineer — 8 years shipping production code.'}</span></span>
+                  <span className="code-line"><span className="c-dim"> {'*/'}</span></span>
+                  <span className="code-line">
+                    <span className="c-kw">export const </span>
+                    <span className="c-fn">developer</span>
+                    <span className="c-op">: </span>
+                    <span className="c-type">Developer</span>
+                    <span className="c-op"> = </span>
+                    <span className="c-dim">{'{'}</span>
+                  </span>
+                  <span className="code-line" style={{ paddingLeft: '2ch' }}>
+                    <span className="c-prop">name</span><span className="c-dim">: </span>
+                    <span className="c-str">&quot;Ezekhiel Paras&quot;</span><span className="c-dim">,</span>
+                  </span>
+                  <span className="code-line code-role" style={{ paddingLeft: '2ch' }}>
+                    <span className="c-prop">role</span><span className="c-dim">: </span>
+                    <span className="c-str2">&quot;</span>
+                    <span ref={el} className="c-str2" />
+                    <span className="c-str2">&quot;</span>
+                    <span className="c-dim">,</span>
+                  </span>
+                  <span className="code-line" style={{ paddingLeft: '2ch' }}>
+                    <span className="c-prop">years</span><span className="c-dim">: </span>
+                    <span className="c-num">8</span><span className="c-dim">, </span>
+                    <span className="c-prop">projects</span><span className="c-dim">: </span>
+                    <span className="c-num">20</span><span className="c-dim">,</span>
+                  </span>
+                  <span className="code-line" style={{ paddingLeft: '2ch' }}>
+                    <span className="c-prop">stack</span><span className="c-dim">: </span>
+                    <span className="c-op">[</span>
+                    <StackCarousel />
+                    <span className="c-op">]</span><span className="c-dim">,</span>
+                  </span>
+                  <span className="code-line"><span className="c-dim">{'};'}</span></span>
+                </div>
+              </div>
 
-        <div className="skills-wrapper grid grid-cols-12 gap-4 p-10 mt-8">
-        <div className="skills-text z-10 text-4xl"> 
-        Designing solutions <span className="text-gray-500 ">customized
-          to meet your requirements</span>
+              {/* Status bar */}
+              <div className="editor-status">
+                <span className="status-left">
+                  <span className="status-branch">⎇ main</span>
+                  <span className="status-ok">✓ ready to hire</span>
+                </span>
+                <span className="status-right">TypeScript · UTF-8 · Ln 10</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        
-        <div className="skills-cards grid grid-cols-1 md:grid-cols-3 gap-6 col-span-12 z-50">
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
-      <span className="text-2xl skill-icon font-bold "><AiOutlineAppstore/></span>
-      <h3 className="text-xl font-bold mb-2">Web and App Development</h3>
-      <p className="text-gray-500">Crafting visually appealing and user-friendly interfaces using <span className="text-cyan-500">HTML</span>, <span className="text-cyan-500">CSS</span>, <span className="text-cyan-500">JavaScript</span>, and modern frameworks like <span className="text-cyan-500">React</span> and <span className="text-cyan-500">Angular</span>.</p>
-    </div>
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300 ">
-    <span className="text-2xl skill-icon font-bold "><AiOutlineDatabase/></span>
-      <h3 className="text-xl font-bold mb-2">Database Management</h3>
-      <p className="text-gray-500">Designing and managing databases with SQL and NoSQL technologies such as  
-      <span className="text-cyan-500"> MySQL</span>, 
-      <span className="text-cyan-500"> PostgreSQL</span>, and 
-      <span className="text-cyan-500"> MongoDB</span>.</p>
-    </div>
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
-    <span className="text-2xl skill-icon font-bold "><AiOutlineApi/></span>
-      <h3 className="text-xl font-bold mb-2">API Development</h3>
-      <p className="text-gray-500">Creating and integrating <span className="text-cyan-500">RESTful APIs</span> to enable smooth communication between <span className="text-cyan-500">front-end</span> and <span className="text-cyan-500">back-end</span> systems.</p>
-    </div>
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
-    <span className="text-2xl skill-icon font-bold hover:border-lime-400 transition-transform transform hover:scale-105 duration-300 "><AiOutlineRise/></span>
-      <h3 className="text-xl font-bold mb-2">Performance Optimization</h3>
-      <p className="text-gray-500">Improving the speed and performance of web applications to provide a better user experience. Work with <span className="text-cyan-500">Django</span>, <span className="text-cyan-500">Python</span>.</p>
-    </div>
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
-    
-    <span className="text-2xl skill-icon font-bold "><AiOutlineShop/></span>
-      <h3 className="text-xl font-bold mb-2">E-commerce Solutions</h3>
-      <p className="text-gray-500">Developing scalable and secure payment solutions for <span className="text-cyan-500">e-commerce platforms</span> tailored to your business needs.</p>
-    </div>
-    <div className="skill-card p-6 bg-gray-800 rounded-lg h-60 hover:border-lime-400 transition-transform transform hover:scale-105 duration-300">
-    <span className="text-2xl skill-icon font-bold "><AiOutlineCloudSync/></span>
-      <h3 className="text-xl font-bold mb-2">Integrating APIs</h3>
-      <p className="text-gray-500">Seamlessly integrating <span className="text-cyan-500">third-party APIs</span> into existing applications.</p>
-    </div>
-  </div>
-  <div className="skills-text z-10 "> 
-  Excited to take on new projects and collaborate.
-  Let's chat about your ideas. <span className="text-lime-400">Reach out!</span>
-        </div>
-       
+      {/* ── STATS ── */}
+      <div className="stats">
+        {[
+          { icon: <FiLayers />,    value: "8",  suffix: "+", label: "Years experience" },
+          { icon: <FiCodepen />,   value: "20", suffix: "+", label: "Projects shipped" },
+          { icon: <FiUserCheck />, value: "8",  suffix: "+", label: "Happy clients" },
+        ].map(({ icon, value, suffix, label }) => (
+          <div key={label} className="stat">
+            <span className="stat-icon">{icon}</span>
+            <span className="stat-value">{value}<span>{suffix}</span></span>
+            <span className="stat-label">{label}</span>
+          </div>
+        ))}
       </div>
 
-      <ProjectsCarousel projects={projects} />
-        
-    
-      <footer className="flex justify-center py-8">
+      {/* ── EXPERIENCE ── */}
+      <section id="experience" className="section" style={{ background: 'var(--ground)' }}>
+        <div className="section-inner">
+          <div className="exp-layout">
+
+            {/* Experience card */}
+            <div className="card">
+              <p className="section-eyebrow">Career</p>
+              <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>
+                Experience <span className="dim">timeline</span>
+              </h2>
+              {experiences.map(({ role, company, period }) => (
+                <div key={company} className="exp-row">
+                  <div className="exp-dot" />
+                  <div>
+                    <p className="exp-role">{role}</p>
+                    <p className="exp-company">{company} · {period}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Contact card */}
+            <div id="contact" className="card">
+              <p className="section-eyebrow">Contact</p>
+              <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>
+                Get in <span className="dim">touch</span>
+              </h2>
+              {contacts.map(({ icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="contact-link"
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  <span className="c-icon">{icon}</span>
+                  {label}
+                </a>
+              ))}
+            </div>
+
+            {/* GitHub repos card */}
+            <div className="git-card">
+              <p className="section-eyebrow">Open source</p>
+              <h2 className="section-title" style={{ fontSize: '1rem', marginBottom: '1.25rem' }}>
+                GitHub <span className="dim">repos</span>
+              </h2>
+              <ul className="repo-list">
+                {repos.map(({ name, lang, updated }) => (
+                  <li key={name}>
+                    <a
+                      href={`https://github.com/Ez3ro/${name}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="repo-link"
+                      title={`Updated ${updated}`}
+                    >
+                      <span className="repo-name">{name}</span>
+                      <span className="repo-meta">
+                        <span className="lang-dot" style={{ background: langColor[lang] || 'var(--muted)' }} />
+                        {lang}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── GITHUB COMMITS ── */}
+      <section className="section" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+        <div className="section-inner">
+          <div className="commits-head">
+            <div>
+              <p className="section-eyebrow">Activity</p>
+              <h2 className="section-title">
+                Recent <span className="dim">commits</span>
+              </h2>
+            </div>
+            <a
+              href="https://github.com/Ez3ro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="commits-profile-link"
+            >
+              <FiGithub size={14} /> @Ez3ro
+            </a>
+          </div>
+
+          <div className="commits-feed">
+            {commits.map(({ repo, sha, date, msg }) => (
+              <a
+                key={sha + date}
+                href={`https://github.com/Ez3ro/${repo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="commit-row"
+              >
+                <span className="commit-sha">{sha}</span>
+                <span className="commit-msg">{msg}</span>
+                <span className="commit-repo">{repo}</span>
+                <span className="commit-date">{date}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SKILLS ── */}
+      <section id="skills" className="section" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="section-inner">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p className="section-eyebrow" style={{ justifyContent: 'center' }}>Capabilities</p>
+            <h2 className="section-title">
+              What I <span className="dim">build</span>
+            </h2>
+          </div>
+          <div className="skills-grid">
+            {skills.map(({ icon, name, desc }) => (
+              <div key={name} className="skill-card">
+                <span className="skill-icon">{icon}</span>
+                <p className="skill-name">{name}</p>
+                <p className="skill-desc">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROJECTS ── */}
+      <section id="projects" className="section" style={{ background: 'var(--ground)' }}>
+        <div className="section-inner">
+          <ProjectsCarousel projects={projects} />
+        </div>
+      </section>
+
+      <footer className="footer">
+        <span className="footer-text">
+          <span style={{ color: 'var(--muted)' }}>{'// '}</span>
+          Ezekhiel Paras © {new Date().getFullYear()}
+        </span>
+        <span className="footer-text" style={{ color: 'var(--border-hi)' }}>
+          Built with Next.js + Tailwind
+        </span>
       </footer>
     </div>
   );

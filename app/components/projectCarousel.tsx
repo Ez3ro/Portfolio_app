@@ -1,7 +1,6 @@
-/* eslint-disable */
 "use client";
-import React, { useState, useEffect } from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // Make sure to install react-icons
+import React, { useState, useEffect, useCallback } from 'react';
+import { FiChevronLeft, FiChevronRight, FiExternalLink } from 'react-icons/fi';
 
 interface Project {
   id: number;
@@ -12,179 +11,119 @@ interface Project {
   link?: string;
 }
 
-interface ProjectsCarouselProps {
-  projects: Project[];
-}
+const ProjectsCarousel: React.FC<{ projects: Project[] }> = ({ projects }) => {
+  const [idx, setIdx]       = useState(0);
+  const [mounted, setMounted] = useState(false);
 
-const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isClient, setIsClient] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  useEffect(() => { setMounted(true); }, []);
 
-  // Set up client-side rendering
+  const prev = useCallback(() => setIdx(i => (i === 0 ? projects.length - 1 : i - 1)), [projects.length]);
+  const next = useCallback(() => setIdx(i => (i + 1) % projects.length),                [projects.length]);
+
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (!mounted) return;
+    const t = setInterval(next, 6000);
+    return () => clearInterval(t);
+  }, [mounted, next]);
 
-  // Handle auto-play
-  useEffect(() => {
-    if (!isClient || !isAutoPlaying || projects.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isClient, isAutoPlaying, projects.length]);
-
-  // Navigation functions
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const goToPrev = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToSlide = (slideIndex: number) => {
-    setCurrentIndex(slideIndex);
-  };
-
-  // Toggle autoplay
-  const toggleAutoPlay = () => {
-    setIsAutoPlaying(!isAutoPlaying);
-  };
-
-  if (!isClient) {
-    return (
-      <div className="projects-container my-16">
-        <div className="projects-wrapper grid grid-cols-12 gap-4 p-10 mt-8">
-          <div className="col-span-12 z-50">
-            <p className="text-gray-400">Loading projects...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (!mounted) return null;
 
   return (
-    <div className="projects-container my-16">
-      <div className="projects-wrapper grid grid-cols-12 gap-4 p-10 mt-8">
-        <div className="col-span-12 relative z-50 mb-8">
-          <h2 className="text-4xl pt-10 text-center font-bold">
-            My <span className="gradient-text">Projects</span>
+    <div>
+      {/* Header row */}
+      <div className="carousel-header">
+        <div>
+          <p className="section-eyebrow">Projects</p>
+          <h2 className="section-title">
+            What I&apos;ve <span className="dim">shipped</span>
           </h2>
-          <p className="text-gray-500 mt-4">
-            A showcase of my recent development work and technical solutions
-          </p>
         </div>
-        
-        <div className="col-span-12 custom-carousel relative z-50">
-          <div className="carousel-container overflow-hidden relative h-[500px] md:h-[400px]">
-            {projects.map((project, index) => (
-              <div 
-                key={project.id} 
-                className={`carousel-slide absolute top-0 left-0 w-full h-full transition-transform duration-500 ease-in-out ${
-                  index === currentIndex ? 'opacity-100 translate-x-0' : 
-                  index < currentIndex ? 'opacity-0 -translate-x-full' : 'opacity-0 translate-x-full'
-                }`}
+        <div className="carousel-nav">
+          <button className="carousel-btn" onClick={prev} aria-label="Previous project">
+            <FiChevronLeft size={16} />
+          </button>
+          <span className="carousel-counter mono">
+            {String(idx + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+          </span>
+          <button className="carousel-btn" onClick={next} aria-label="Next project">
+            <FiChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      {/* Viewport */}
+      <div className="glow-card" style={{ '--glow-r': '10px' } as React.CSSProperties}>
+        <div className="carousel-viewport">
+          {projects.map((project, i) => {
+            const offset = i - idx;
+            return (
+              <div
+                key={project.id}
+                className="carousel-slide"
+                style={{
+                  transform: `translateX(${offset * 100}%)`,
+                  opacity: offset === 0 ? 1 : 0,
+                  pointerEvents: offset === 0 ? 'auto' : 'none',
+                }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-                  <div className="project-image relative h-[250px] md:h-full">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="object-cover w-full h-full rounded-lg"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        console.log("Image failed to load:", project.image);
-                      }}
-                    />
-                  </div>
-                  <div className="project-info flex flex-col justify-between h-full">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-gray-400">{project.description}</p>
-                      
-                      {project.technologies && project.technologies.length > 0 && (
-                        <div className="mt-4">
-                          <h4 className="text-lime-400 mb-2">Technologies:</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech, index) => (
-                              <span 
-                                key={index} 
-                                className="bg-gray-800 px-3 py-1 rounded-full text-sm text-cyan-500"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
+                <div className="slide-img">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      img.style.display = 'none';
+                      img.parentElement?.classList.add('slide-img-fallback');
+                      img.parentElement?.setAttribute('data-title', project.title);
+                    }}
+                  />
+                </div>
+
+                <div className="slide-info">
+                  <div>
+                    <h3 className="slide-title">{project.title}</h3>
+                    <p className="slide-desc">{project.description}</p>
+
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="slide-stack">
+                        <p className="stack-label">Stack</p>
+                        <div className="stack-tags">
+                          {project.technologies.map(tech => (
+                            <span key={tech} className="stack-tag">{tech}</span>
+                          ))}
                         </div>
-                      )}
-                    </div>
-                    
-                    {project.link && (
-                      <a 
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer" 
-                        className="mt-6 inline-flex items-center text-lime-400 hover:text-lime-300"
-                      >
-                        View Project <span className="ml-2">→</span>
-                      </a>
+                      </div>
                     )}
                   </div>
+
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="slide-link"
+                    >
+                      View live <FiExternalLink size={13} />
+                    </a>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Navigation buttons */}
-          <button 
-            onClick={goToPrev}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full p-2 text-lime-400 hover:bg-opacity-70 z-50"
-            aria-label="Previous project"
-          >
-            <FiChevronLeft size={24} />
-          </button>
-          <button 
-            onClick={goToNext}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full p-2 text-lime-400 hover:bg-opacity-70 z-50"
-            aria-label="Next project"
-          >
-            <FiChevronRight size={24} />
-          </button>
-
-          {/* Pagination dots */}
-          <div className="flex justify-center mt-4 gap-2 z-50">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  currentIndex === index ? 'bg-lime-400' : 'bg-gray-600 hover:bg-gray-500'
-                }`}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Auto-play toggle button */}
-          <button
-            onClick={toggleAutoPlay}
-            className={`mt-4 ml-auto flex items-center gap-2 px-3 py-1 rounded-full text-sm ${
-              isAutoPlaying ? 'bg-lime-900 text-lime-400' : 'bg-gray-800 text-gray-400'
-            }`}
-          >
-            {isAutoPlaying ? 'Auto-play: ON' : 'Auto-play: OFF'}
-          </button>
+            );
+          })}
         </div>
+      </div>
+
+      {/* Dots */}
+      <div className="carousel-dots">
+        {projects.map((_, i) => (
+          <button
+            key={i}
+            className={`carousel-dot${i === idx ? ' active' : ''}`}
+            style={{ width: i === idx ? 24 : 8 }}
+            onClick={() => setIdx(i)}
+            aria-label={`Go to project ${i + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
