@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import StackCarousel from '../components/StackCarousel';
 import ProjectsCarousel from '../components/projectCarousel';
 import TypedRole from '../components/TypedRole';
+import GitHubStats from '../components/GitHubStats';
+import { getRepos, getCommits, getStats } from '../lib/github';
 import {
   FiLayers, FiCodepen, FiUserCheck,
   FiSmartphone, FiGithub, FiLinkedin, FiMail,
@@ -75,27 +77,6 @@ const experiences = [
   { role: "Freelance Web Developer",               company: "Self-Employed",               period: "Jan 2017 – Jul 2018" },
 ];
 
-// Real public repos (github.com/Ez3ro) — most recently updated first
-const repos = [
-  { name: "pahirap",                     lang: "JavaScript", updated: "2026-06-20" },
-  { name: "Portfolio_app",               lang: "TypeScript", updated: "2025-12-22" },
-  { name: "teamnicoleandderek2",         lang: "TypeScript", updated: "2025-05-19" },
-  { name: "ServerLivestream",            lang: "HTML",       updated: "2023-06-04" },
-  { name: "example-app",                 lang: "CSS",        updated: "2023-05-12" },
-  { name: "NacomexLive",                 lang: "HTML",       updated: "2023-05-07" },
-  { name: "ProjectVehicularDataBank-1",  lang: "Python",     updated: "2022-05-25" },
-];
-
-// Real recent commits pulled from the GitHub API
-const commits = [
-  { repo: "pahirap",        sha: "4016bc3", date: "2026-06-20", msg: "update" },
-  { repo: "pahirap",        sha: "ce19575", date: "2026-06-20", msg: "additional update + bug fixes + new features" },
-  { repo: "pahirap",        sha: "160cf86", date: "2026-06-20", msg: "Install Vercel Web Analytics" },
-  { repo: "Portfolio_app",  sha: "813ecc5", date: "2025-12-22", msg: "Fix React Server Components CVE vulnerabilities" },
-  { repo: "example-app",    sha: "develop", date: "2023-05-21", msg: "fix the UI" },
-  { repo: "ServerLivestream", sha: "a1b2c3d", date: "2023-05-04", msg: "Livestreamserver-upload" },
-];
-
 // Map languages → the accent dot colour used in the repo list
 const langColor: Record<string, string> = {
   JavaScript: "#f1e05a",
@@ -103,6 +84,9 @@ const langColor: Record<string, string> = {
   Python:     "#3572A5",
   HTML:       "#e34c26",
   CSS:        "#563d7c",
+  PHP:        "#4F5D95",
+  Vue:        "#41b883",
+  Other:      "#8b949e",
 };
 
 const skills = [
@@ -121,7 +105,14 @@ const contacts = [
   { icon: <FiMail       size={14} />, label: "Ezekhielofficial@gmail.com", href: "mailto:Ezekhielofficial@gmail.com" },
 ];
 
-const Home: React.FC = () => {
+const Home = async () => {
+  // Live GitHub data, fetched server-side (cached hourly, falls back gracefully)
+  const [repos, commits, stats] = await Promise.all([
+    getRepos(),
+    getCommits(),
+    getStats(),
+  ]);
+
   return (
     <div style={{ background: 'var(--ground)', minHeight: '100vh' }}>
       {/* Real <h1> for SEO & screen readers — the visual hero is a code block */}
@@ -283,10 +274,10 @@ const Home: React.FC = () => {
                 GitHub <span className="dim">repos</span>
               </h2>
               <ul className="repo-list">
-                {repos.map(({ name, lang, updated }) => (
+                {repos.map(({ name, lang, updated, url }) => (
                   <li key={name}>
                     <a
-                      href={`https://github.com/Ez3ro/${name}`}
+                      href={url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="repo-link"
@@ -307,8 +298,15 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ── GITHUB STATS + LANGUAGES ── */}
+      <section className="section" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', paddingTop: '3.5rem', paddingBottom: '2.5rem' }}>
+        <div className="section-inner">
+          <GitHubStats stats={stats} latestPush={stats.latestPush} />
+        </div>
+      </section>
+
       {/* ── GITHUB COMMITS ── */}
-      <section className="section" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+      <section className="section" style={{ background: 'var(--surface)', borderBottom: '1px solid var(--border)', paddingTop: '2.5rem', paddingBottom: '3.5rem' }}>
         <div className="section-inner">
           <div className="commits-head">
             <div>

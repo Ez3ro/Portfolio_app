@@ -674,6 +674,90 @@ code, .mono {
   .commit-date { grid-column: 2; }
 }
 
+/* ──────────────────────────────────────────
+   GITHUB STATS + LANGUAGE BAR
+────────────────────────────────────────── */
+.gh-stats-head { margin-bottom: 1.5rem; }
+
+.gh-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.gh-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem 1.25rem;
+  background: var(--ground);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.gh-stat-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-2px);
+}
+
+.gh-stat-icon { color: var(--accent); }
+
+.gh-stat-value {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.gh-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Language breakdown bar */
+.gh-lang {
+  background: var(--ground);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+
+.gh-lang-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.gh-lang-seg { height: 100%; transition: width 0.4s ease; }
+.gh-lang-seg:not(:last-child) { border-right: 2px solid var(--ground); }
+
+.gh-lang-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.gh-lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--text);
+}
+.gh-lang-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.gh-lang-pct { color: var(--muted); }
+
+@media (max-width: 700px) {
+  .gh-stat-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ─────────────────────────────────────────
    SKILLS
 ───────────────────────────────────────── */
