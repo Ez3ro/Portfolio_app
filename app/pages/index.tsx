@@ -1,10 +1,8 @@
-"use client";
-import React, { useEffect, useRef } from "react";
-import Head from 'next/head';
-import Typed from 'typed.js';
+import React from "react";
 import Header from '../components/Header';
 import StackCarousel from '../components/StackCarousel';
 import ProjectsCarousel from '../components/projectCarousel';
+import TypedRole from '../components/TypedRole';
 import {
   FiLayers, FiCodepen, FiUserCheck,
   FiSmartphone, FiGithub, FiLinkedin, FiMail,
@@ -23,47 +21,47 @@ const projects: Project[] = [
   {
     id: 0, title: "Budget Tracker",
     description: "Personal finance app for tracking income, expenses, debts, and lent money — with per-period budgets, category breakdowns, and live spending gauges. Built and deployed on Vercel.",
-    image: "/images/pahirap.png",
+    image: "/images/pahirap.webp",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind", "PostgreSQL", "Supabase", "Vercel"],
     link: "https://pahirap.vercel.app",
   },
   {
     id: 1, title: "Cacao Lavezares",
     description: "E-commerce platform for a local chocolate brand with secure payment processing and a polished storefront experience.",
-    image: "/images/cacaolav.png",
+    image: "/images/cacaolav.webp",
     technologies: ["Laravel", "PHP", "MySQL", "Bootstrap", "WordPress", "WooCommerce", "Elementor"],
     link: "https://cacaolavezares.com/",
   },
   {
     id: 2, title: "PRD RealEstate",
     description: "National property platform with advanced search, multi-language support, and booking capabilities across Australia.",
-    image: "/images/PRD.png",
+    image: "/images/PRD.webp",
     technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis"],
     link: "https://www.prd.com.au/",
   },
   {
     id: 3, title: "RT Edgar RealEstate",
     description: "125-year-old Victorian agency's full-stack platform — project marketing, development listings, and end-to-end sales.",
-    image: "/images/RTE.png",
+    image: "/images/RTE.webp",
     technologies: ["Python", "Django", "React", "PostgreSQL", "AWS", "Docker", "Elasticsearch", "Wagtail", "Redis"],
     link: "https://www.rtedgar.com/",
   },
   {
     id: 4, title: "Nacomex Live",
     description: "Live streaming platform for gaming events — real-time chat, multi-stream viewing, and simulcast to any platform.",
-    image: "/images/Nacomexlive.png",
+    image: "/images/Nacomexlive.webp",
     technologies: ["Vue.js", "PHP", "PostgreSQL", "Stripe", "WebSockets", "Node.js", "Socket.IO"],
   },
   {
     id: 5, title: "Vehicular Data Bank",
     description: "Real-time traffic and parking analytics platform with ML-powered predictions and live data visualisation.",
-    image: "/images/vdb.png",
+    image: "/images/vdb.webp",
     technologies: ["Python", "Django", "WebSockets", "PostgreSQL", "Redis", "TensorFlow", "Keras"],
   },
   {
     id: 6, title: "Animal Del Deporte",
     description: "Club website with live news updates and a clean interface tailored to a loyal sports community.",
-    image: "/images/Animaldeldeporte.png",
+    image: "/images/Animaldeldeporte.webp",
     technologies: ["Node.js", "Express", "Socket.IO"],
   },
 ];
@@ -123,29 +121,12 @@ const contacts = [
 ];
 
 const Home: React.FC = () => {
-  const el = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (!el.current) return;
-    const typed = new Typed(el.current, {
-      strings: ['Full Stack Engineer', 'Problem Solver', 'Web &amp; App Developer'],
-      typeSpeed: 55,
-      backSpeed: 30,
-      backDelay: 2000,
-      startDelay: 500,
-      cursorChar: '|',
-      loop: true,
-      showCursor: true,
-    });
-    return () => typed.destroy();
-  }, []);
-
   return (
     <div style={{ background: 'var(--ground)', minHeight: '100vh' }}>
-      <Head>
-        <title>Ezekhiel Paras — Full Stack Developer</title>
-        <meta name="description" content="Full Stack Software Engineer — 8+ years shipping web platforms, APIs, and e-commerce solutions." />
-      </Head>
+      {/* Real <h1> for SEO & screen readers — the visual hero is a code block */}
+      <h1 className="sr-only">
+        Ezekhiel Paras — Full Stack Web &amp; App Developer
+      </h1>
 
       <Header />
 
@@ -207,13 +188,7 @@ const Home: React.FC = () => {
                     <span className="c-prop">name</span><span className="c-dim">: </span>
                     <span className="c-str">&quot;Ezekhiel Paras&quot;</span><span className="c-dim">,</span>
                   </span>
-                  <span className="code-line code-role" style={{ paddingLeft: '2ch' }}>
-                    <span className="c-prop">role</span><span className="c-dim">: </span>
-                    <span className="c-str2">&quot;</span>
-                    <span ref={el} className="c-str2" />
-                    <span className="c-str2">&quot;</span>
-                    <span className="c-dim">,</span>
-                  </span>
+                  <TypedRole />
                   <span className="code-line" style={{ paddingLeft: '2ch' }}>
                     <span className="c-prop">years</span><span className="c-dim">: </span>
                     <span className="c-num">8</span><span className="c-dim">, </span>

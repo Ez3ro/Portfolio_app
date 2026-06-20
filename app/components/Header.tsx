@@ -45,9 +45,9 @@ const Header: React.FC = () => {
           </a>
           <button
             className="nav-menu-btn"
-            style={{ display: 'none' }}
             onClick={() => setOpen(o => !o)}
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>

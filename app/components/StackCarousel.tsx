@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
-import pythonLogo     from '../../public/images/python.png';
-import phpLogo        from '../../public/images/php.png';
-import laravelLogo    from '../../public/images/laravel.png';
-import nextjsLogo     from '../../public/images/nextjs.png';
-import reactLogo      from '../../public/images/react.png';
-import tailwindLogo   from '../../public/images/tailwind.png';
-import djangoLogo     from '../../public/images/django.png';
-import javascriptLogo from '../../public/images/javascript.png';
+import pythonLogo     from '../../public/images/python.webp';
+import phpLogo        from '../../public/images/php.webp';
+import laravelLogo    from '../../public/images/laravel.webp';
+import nextjsLogo     from '../../public/images/nextjs.webp';
+import reactLogo      from '../../public/images/react.webp';
+import tailwindLogo   from '../../public/images/tailwind.webp';
+import djangoLogo     from '../../public/images/django.webp';
+import javascriptLogo from '../../public/images/javascript.webp';
 
 const logos = [
   { src: pythonLogo.src,     alt: 'Python' },
@@ -74,7 +74,7 @@ const StackCarousel: React.FC = () => {
       <span className="stack-carousel-viewport">
         <span className="stack-carousel-track" ref={trackRef}>
           {[...logos, ...logos].map(({ src, alt }, i) => (
-            <img key={i} src={src} alt={alt} className="stack-icon" />
+            <img key={i} src={src} alt={alt} className="stack-icon" width={22} height={22} loading="eager" />
           ))}
         </span>
       </span>
